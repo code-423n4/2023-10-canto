@@ -121,7 +121,7 @@ Automated findings output for the audit can be found [here](https://github.com/c
 ## Scoping Details 
 [ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
-```
+
 | Question                                           | Answer                             |
 | -------------------------------------------------- | ---------------------------------- |
 | Repository                                         | https://github.com/Plex-Engineer/CrocSwap-protocol/pull/1 |
@@ -137,18 +137,15 @@ Automated findings output for the audit can be found [here](https://github.com/c
 | Upgrade of existing system?                        | False - |
 | "All that apply" checked:                          | AMM, ERC-20 Token  |
 | Need to understand other part of codebase:         | Yes - |
-
-This is a liquidity mining protocol for Ambient Dex. As such, an understanding of Ambient Dex will be very helpful for this audit. However, it is not necessary to understand all parts of Ambient. Just an understanding of how providing liquidity works will be sufficient.
-
+| Other codebase context | This is a liquidity mining protocol for Ambient Dex. As such, an understanding of Ambient Dex will be very helpful for this audit. However, it is not necessary to understand all parts of Ambient. Just an understanding of how providing liquidity works will be sufficient. |
 | Oracle                                             | No - |
 | Fork?                                              | False |
-
-Unique logic- concentrated liquidity (uni v3 style)
 | If fork, describe your customizations/differences: | |
+| Unique logic | concentrated liquidity (uni v3 style) |
 | Does it use a side chain?                          | False |
 | If yes, is it EVM-compatible?                      | |
-| Areas to focus on/break: This LM protocol will be used to incentivize pools on Canto. We would like to ensure that the amount of incentives released is exactly as we specify and the wallets who receive the incentives are the correct ones (LPing the correct ranges)
-```
+| Areas to focus on/break |This LM protocol will be used to incentivize pools on Canto. We would like to ensure that the amount of incentives released is exactly as we specify and the wallets who receive the incentives are the correct ones (LPing the correct ranges) |
+
 
 # Tests
 
