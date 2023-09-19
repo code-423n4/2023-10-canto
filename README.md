@@ -11,22 +11,6 @@ Ultimately, when we launch the audit, this repo will be made public and will con
 Some of the checklists in this doc are for **C4 (🐺)** and some of them are for **you as the audit sponsor (⭐️)**.
 
 ---
-
-# Audit setup
-
-## 🐺 C4: Set up repos
-- [ ] Create a new private repo named `YYYY-MM-sponsorname` using this repo as a template.
-- [ ] Rename this repo to reflect audit date (if applicable)
-- [ ] Rename auditt H1 below
-- [ ] Update pot sizes
-- [ ] Fill in start and end times in audit bullets below
-- [ ] Add link to submission form in audit details below
-- [ ] Add the information from the scoping form to the "Scoping Details" section at the bottom of this readme.
-- [ ] Add matching info to the Code4rena site
-- [ ] Add sponsor to this private repo with 'maintain' level access.
-- [ ] Send the sponsor contact the url for this repo to follow the instructions below and add contracts here. 
-- [ ] Delete this checklist.
-
 # Repo setup
 
 ## ⭐️ Sponsor: Add code to this repo
@@ -57,26 +41,27 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 
 ---
 
-# Sponsorname audit details
-- Total Prize Pool: XXX XXX USDC (Notion: Total award pool)
-  - HM awards: XXX XXX USDC (Notion: HM (main) pool)
-  - Analysis awards: XXX XXX USDC (Notion: Analysis pool)
-  - QA awards: XXX XXX USDC (Notion: QA pool)
-  - Bot Race awards: XXX XXX USDC (Notion: Bot Race pool)
-  - Gas awards: XXX XXX USDC (Notion: Gas pool)
-  - Judge awards: XXX XXX USDC (Notion: Judge Fee)
-  - Lookout awards: XXX XXX USDC (Notion: Sum of Pre-sort fee + Pre-sort early bonus)
-  - Scout awards: $500 USDC (Notion: Scout fee - but usually $500 USDC)
-  - (this line can be removed if there is no mitigation) Mitigation Review: XXX XXX USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
+# Canto audit details
+- Total Prize Pool: $24,500 
+  - HM awards: $16,500
+  - Analysis awards: $1,000 
+  - QA awards: $500 
+  - Bot Race awards: $1,500
+  - Gas awards: $500
+  - Judge awards: $2,400
+  - Lookout awards: $1,600
+  - Scout awards: $500 USDC 
 - Join [C4 Discord](https://discord.gg/code4rena) to register
-- Submit findings [using the C4 form](https://code4rena.com/contests/YYYY-MM-AuditName/submit)
+- Submit findings [using the C4 form](https://code4rena.com/contests/2023-09-canto/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
-- Starts TBD XXX XXX XX 20:00 UTC (ex. `Starts March 22, 2023 20:00 UTC`)
-- Ends TBD XXX XXX XX 20:00 UTC (ex. `Ends March 30, 2023 20:00 UTC`)
+- Starts September 22, 2023 20:00 UTC 
+- Ends September 26, 2023 20:00 UTC 
+
+❗️Awarding Note for Wardens, Judges, and Lookouts: If you want to claim your awards in $ worth of CANTO, you must follow the steps outlined in this thread; otherwise you'll be paid out in USDC.
 
 ## Automated Findings / Publicly Known Issues
 
-Automated findings output for the audit can be found [here](bot-report.md) within 24 hours of audit opening.
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-09-canto/bot-report.md) within 24 hours of audit opening.
 
 *Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
 
@@ -137,23 +122,32 @@ Automated findings output for the audit can be found [here](bot-report.md) withi
 [ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
 ```
-- If you have a public code repo, please share it here:  
-- How many contracts are in scope?:   
-- Total SLoC for these contracts?:  
-- How many external imports are there?:  
-- How many separate interfaces and struct definitions are there for the contracts within scope?:  
-- Does most of your code generally use composition or inheritance?:   
-- How many external calls?:   
-- What is the overall line coverage percentage provided by your tests?:
-- Is this an upgrade of an existing system?:
-- Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): 
-- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?:   
-- Please describe required context:   
-- Does it use an oracle?:  
-- Describe any novel or unique curve logic or mathematical models your code uses: 
-- Is this either a fork of or an alternate implementation of another project?:   
-- Does it use a side-chain?:
-- Describe any specific areas you would like addressed:
+| Question                                           | Answer                             |
+| -------------------------------------------------- | ---------------------------------- |
+| Repository                                         | https://github.com/Plex-Engineer/CrocSwap-protocol/pull/1 |
+| How many contracts are in scope                    | 2  |
+| Total SLoC for these contracts                     | 80  |
+| How many external imports are there?               | 3  |
+| How many separate interfaces and struct definitions are there for the contracts within scope? | 1 |
+| Does most of your code generally use composition or inheritance? | Inheritance |
+| How many external calls                            | 0  |
+| What is the overall line coverage percentage provided by your tests?: | 75 |
+| Please describe required context:                  |  |
+| Are there any novel or unique curve logic or mathematical models?: |  n/a |
+| Upgrade of existing system?                        | False - |
+| "All that apply" checked:                          | AMM, ERC-20 Token  |
+| Need to understand other part of codebase:         | Yes - |
+
+This is a liquidity mining protocol for Ambient Dex. As such, an understanding of Ambient Dex will be very helpful for this audit. However, it is not necessary to understand all parts of Ambient. Just an understanding of how providing liquidity works will be sufficient.
+
+| Oracle                                             | No - |
+| Fork?                                              | False |
+
+Unique logic- concentrated liquidity (uni v3 style)
+| If fork, describe your customizations/differences: | |
+| Does it use a side chain?                          | False |
+| If yes, is it EVM-compatible?                      | |
+| Areas to focus on/break: This LM protocol will be used to incentivize pools on Canto. We would like to ensure that the amount of incentives released is exactly as we specify and the wallets who receive the incentives are the correct ones (LPing the correct ranges)
 ```
 
 # Tests
