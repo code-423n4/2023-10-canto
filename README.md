@@ -54,8 +54,8 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2023-09-canto/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
-- Starts October 02, 2023 20:00 UTC 
-- Ends October 06, 2023 20:00 UTC 
+- Starts October 04, 2023 20:00 UTC 
+- Ends October 10, 2023 20:00 UTC 
 
 ❗️Awarding Note for Wardens, Judges, and Lookouts: If you want to claim your awards in $ worth of CANTO, you must follow the steps outlined in this thread; otherwise you'll be paid out in USDC.
 
