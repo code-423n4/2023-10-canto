@@ -1,0 +1,496 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q2-2023 / canto-jun20
+==============================================================
+
+[06/16/2023 21:36] itsbritt#0491 (pinned)
+👋 Hello and welcome to the audit channel for the $36,500 **Canto** audit!
+
+📆 Audit opens Tuesday, 20 June 2023 20:00 (20:00 UTC) and runs through Friday, 23 June 2023 20:00 (20:00 UTC) (3 days).
+
+Please give a warm welcome to the **Canto** team, particularly @ksystm & @kt_nowk who will be available for questions either here in the channel or via DM in the EST/KST timezones.
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/contests/2023-06-canto
+
+{Embed}
+https://code4rena.com/contests/2023-06-canto
+Code4rena
+Code4rena is a competitive audit platform that finds more high-severity vulnerabilities, more quickly than any other auditing method.
+Code4rena - ARCHIVE-Q2-2023 - canto-jun20 [1119375565594574938].txt_Files/c4-og-banner-3E5BC.png
+
+{Reactions}
+👋 (12) 
+
+[06/17/2023 04:46] 0x11singh99
+will this be private audit ?
+
+{Reactions}
+👎 
+
+[06/17/2023 10:15] Neon2835#2835
+it should be public audit
+
+{Reactions}
+✅ (2) 
+
+[06/18/2023 18:25] davidgiladi
+Why there's no bot race?
+
+
+[06/18/2023 19:26] milotruck
+https://discord.com/channels/810916927919620096/1093914558776758403/1119299050588610691
+
+
+[06/19/2023 05:08] evokid
+It's Golang
+
+
+[06/20/2023 12:55] itsmetechjay (pinned)
+For this audit, you have the option to be paid out in USDC or CANTO.  If you want to claim your awards in $ worth of CANTO, please follow the steps in the thread prior to the audit close: Friday, 23 June 2023 20:00.  If you do not follow the steps in the thread, any earned rewards will be paid out in USDC.
+
+Details in thread 👉
+
+
+[06/20/2023 12:56] itsmetechjay
+Pinned a message.
+
+
+[06/20/2023 12:56] itsmetechjay
+Pinned a message.
+
+
+[06/20/2023 20:06] t_k___ (pinned)
+Hey all! Super excited for this audit. Here's a video i've recorded giving a high level overview of the onboarding module:
+
+https://www.loom.com/share/632db169981740b2b149411c9249def5?sid=75e7de98-e5ab-4e17-a67d-dfe642f15b78
+
+if you have any questions we'll be here to answer them. Cheers.
+
+{Embed}
+https://www.loom.com/share/632db169981740b2b149411c9249def5?sid=75e7de98-e5ab-4e17-a67d-dfe642f15b78
+Understanding the Onboarding Module 🤔
+Hey there! In this Loom, I'll be explaining how the onboarding module works. Essentially, it's a middleware that automates the process of bridging tokens from other IBC-enabled blockchains to Kanto. The module checks if the user has less than 4Canto and if the IBC token is registered to the onboarding module. If so, it swaps a small amount of t...
+Code4rena - ARCHIVE-Q2-2023 - canto-jun20 [1119375565594574938].txt_Files/632db169981740b2b149411c9249def5-00001-F830E.gif
+
+{Reactions}
+👍 (7) hi5 (3) 🔥 (4) 
+
+[06/20/2023 20:11] kartoonjoy
+Pinned a message.
+
+
+[06/20/2023 20:14] 0xkazimm
+thanks ser 🙂
+
+{Reactions}
+hi5 
+
+[06/20/2023 20:37] evokid
+@kt_nowk Hey friend, "the onboarding process is non-atomic, meaning that even if the swap or conversion fails, it does not revert IBC transfer and the asset transferred to the Canto network will still remain in the Canto network."  would elaborate that more if possible.. the asset will transfer anyway ?
+
+
+[06/20/2023 20:40] t_k___
+Sure. If you send a token from Ethereum to Canto using an IBC transfer, the IBC transfer will still be successful in the event that the swap for 4 canto or the automatic ERC20 conversion fails. 
+
+In other words, your IBC transfer will never be reverted because of the onboarding process. If you send tokens to Canto using IBC, they will always end up on Canto (never back to the origin chain)
+
+{Reactions}
+👌🏼 (4) 
+
+[06/20/2023 20:47] t_k___
+@evokid
+
+
+[06/21/2023 10:23] mosharaf
+what is IBC ?
+
+
+[06/21/2023 11:02] evokid
+https://tutorials.cosmos.network/academy/3-ibc/1-what-is-ibc.html
+
+{Embed}
+https://tutorials.cosmos.network/academy/3-ibc/1-what-is-ibc.html
+What is IBC? | Developer Portal
+Introduction to the IBC Protocol
+
+
+[06/21/2023 11:03] evokid
+https://www.coinbase.com/cloud/discover/dev-foundations/ibc-protocol
+
+{Embed}
+https://www.coinbase.com/cloud/discover/dev-foundations/ibc-protocol
+What is the Inter-Blockchain Communication Protocol (IBC)?
+The Inter-Blockchain Communication Protocol (IBC) allows independent blockchains to directly communicate and trade assets
+
+
+[06/21/2023 12:40] golanger
+@kt_nowk can I dm your please? Just sent a friend request
+
+{Reactions}
+👍 
+
+[06/21/2023 14:55] 0xsorrynotsorry
+Hi @kt_nowk , just sent a DM, thank you for your time.
+
+{Reactions}
+👍 
+
+[06/22/2023 08:02] lirios.
+When submitting a finding, the site shows
+ "All participating wardens are encouraged to submit an Analysis prior to the closing date"  
+Does that apply to this contest too ?
+
+
+[06/22/2023 12:35] yaarduck
+@kt_nowk @ksystm Sent a DM as well, thanks!
+
+
+[06/22/2023 12:54] itsmetechjay
+Yes.
+
+
+[06/22/2023 14:18] evokid
+@kt_nowk sent a DM
+
+{Reactions}
+👍 
+
+[06/22/2023 15:49] dontonka#9878
+@kt_nowk @ksystm sent a friend request too
+
+
+[06/22/2023 20:54] 0xnightraven
+@kt_nowk Just sent a DM
+
+{Reactions}
+👍 
+
+[06/23/2023 01:54] squeaky_cactus
+If the step of convert IBC coins to ERC20 fails, the IBC get transferred from the origin chain to Canto chain, but as the conversion to ERC20 fail what is the intention for funds recovery? ...a manual adjustment?
+
+
+[06/23/2023 03:03] t_k___
+there's a separate function users can call to convert from IBC voucher to ERC20
+
+currently users do that manually in the bridging process, so if that step were to fail during the middleware, users could always go back to the manual process to recover
+
+{Reactions}
+🔥 🙏 
+
+[06/23/2023 03:04] t_k___
+@squeaky_cactus
+
+
+[06/23/2023 05:03] kutugu
+@kt_nowk Dmed
+
+
+[06/23/2023 08:21] csjaybit
+are there any golang language experts here? I just smartcontracts and lol
+
+{Reactions}
+🫡 
+
+[06/23/2023 10:13] dontonka#9878
+Can you remind me how Analysis work and how what it should include etc?
+
+
+[06/23/2023 10:24] jammyaa
+Hi, What happens if I submit a finding but don't submit the analysis report? @Jay | C4 Thank you so much
+
+
+[06/23/2023 11:44] squeaky_cactus
+I've just submitted an Analysis report, you choose one of the two types and then you get a prompt with bullet points to cover.
+
+There's no examples yet, but here is the guidelines
+https://code4rena.notion.site/Analyses-Guidelines-and-FAQ-2808a71e08e44c81a985527194f5f118
+
+{Embed}
+https://code4rena.notion.site/Analyses-Guidelines-and-FAQ-2808a71e08e44c81a985527194f5f118
+Analyses: Guidelines and FAQ
+Currently, Analyses cannot be edited after submitting. We suggest saving your work locally until you’re ready to submit your final draft.
+Code4rena - ARCHIVE-Q2-2023 - canto-jun20 [1119375565594574938].txt_Files/https%253A%252F%252Fs3-us-west-2.amazonaws-2D68C.png
+
+{Reactions}
+❤️ 
+
+[06/23/2023 13:46] itsmetechjay
+I believe @squeaky_cactus answered your question.  But let us know if you have followups.
+
+{Reactions}
+👍 
+
+[06/23/2023 13:47] itsmetechjay
+Analysis reports are encouraged but not required. There is more info in this thread: https://discord.com/channels/810916927919620096/810936719003090974/1115294476009750593
+
+
+[06/23/2023 13:53] koolexc
+Could you please refer to the file that has this functionality (i.e. manual bridging process)?
+
+
+[06/23/2023 14:17] t_k___
+the manual bridging process is 2 steps: IBC transfer, and then ERC20 convert
+
+the erc20 conversion happens in the x/erc20 module
+
+
+[06/23/2023 14:35] koolexc
+Thanks!
+
+
+[06/23/2023 16:12] 0xnightraven
+Anyone has trouble running test?
+
+
+[06/23/2023 16:12] 0xnightraven
+undefined: secp256k1.RecoverPubkey
+
+
+[06/23/2023 16:13] 0xnightraven
+undefined: secp256k1.VerifySignature
+
+
+[06/23/2023 16:13] 0xnightraven
+I have golang installed
+
+
+[06/23/2023 16:13] 0xnightraven
+and I just run
+
+
+[06/23/2023 16:13] 0xnightraven
+go test .\keeper\ibc_callbacks_test.go
+
+
+[06/23/2023 17:54] dwward3n
+no issues, running go1.20.5, macos
+
+
+[06/23/2023 17:56] dwward3n
+@kt_nowk is the standard token supposed to be Canto?
+
+
+[06/23/2023 17:57] t_k___
+yes
+
+
+[06/23/2023 17:58] t_k___
+try  `make install` in the base Canto directory
+
+
+[06/23/2023 17:58] t_k___
+and then go into the x/onboarding and run `go test ./...`
+
+
+[06/23/2023 18:01] dwward3n
+curious, test runs without `make install`
+is it because im just running tests for coinswap and onboarding?
+
+
+[06/23/2023 18:04] t_k___
+it will depend on how you have your go configured but it seems like the issue above is an issue with missing certain packages.
+
+either that, or you have to run tests from outer directory and not just single file since there are imports from other modules
+
+
+[06/23/2023 18:05] t_k___
+technically should not have to make install
+
+
+[06/23/2023 18:18] dwward3n
+can you elaborate on `Double swaps are disabled`
+
+
+[06/23/2023 18:30] t_k___
+swaps can't go through two pools
+
+
+[06/23/2023 18:30] t_k___
+so if there is canto/eth pool and canto/usdc pool, can't make swap with eth/usdc
+
+
+[06/23/2023 19:34] dwward3n
+I can't find issues here, haha
+
+
+[06/23/2023 19:35] dwward3n
+@kt_nowk
+
+{Attachments}
+Code4rena - ARCHIVE-Q2-2023 - canto-jun20 [1119375565594574938].txt_Files/image-C591B.png
+
+
+[06/23/2023 19:35] dwward3n
+in the above, is `ConvertCoin` outofscope?
+
+
+[06/23/2023 19:54] t_k___
+yeah the erc20 module is out of scope
+
+{Reactions}
+👍 (2) 
+
+[06/23/2023 19:59] _3doc_
+Thanks for submitting this project to us @kt_nowk - it was my first c4 contest and very good fun. 
+
+Can’t wait to see the report 🫣
+
+{Reactions}
+10_10 
+
+[06/23/2023 20:00] yaarduck
+Thanks everyone! 🙂 waiting for the report
+
+{Reactions}
+🤗 (2) 
+
+[06/23/2023 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺wardens The **Canto** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Keep an eye on #📢announcements  for regular updates on how the audit is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping a Contest-Admin if you have questions along the way!
+
+{Reactions}
+👍 (16) 
+
+[06/28/2023 14:21] c145h
+is this moving to archive?
+
+
+[06/28/2023 14:27] kartoonjoy
+it will soon
+
+
+[06/28/2023 19:25] xdzibec
+When is the result
+
+
+[07/03/2023 10:04] devabdee
+Looks like its near post judging!
+
+
+[07/11/2023 21:10] liveactionllamac4
+🤑 🎉  Awards for **Canto**:
+
+$5,421.25 USDC » @sces60107 | GimelSec 
+$3,562.76 USDC » @dontonka 
+$3,407.64 USDC » @3doc  
+$3,388.28 USDC » @Lirios 
+$3,388.28 USDC » Team_FliBit ( @14si2o_Flint & @Naubit ) 
+$3,388.28 USDC » @Franfran 
+$1,321.43 USDC » @Yaarduck 
+$1,035.84 USDC » @Rolezn  
+$1,035.84 USDC » @hihen 
+$1,016.48 USDC » @seerether  
+$1,016.48 USDC » @erebus  
+$453.49 USDC » @0xNightRaven 
+$348.84 USDC » @kutu 
+$348.84 USDC » @Udsen  
+$348.84 USDC » @0xSmartContract  
+$226.82 USDC » @squeaky_cactus 
+$174.48 USDC » @DevABDee 
+$19.36 USDC » @kaveyjoe  
+$19.36 USDC » @Shogoki  
+$19.36 USDC » @nadin 
+$19.36 USDC » @max10afternoon  
+$19.36 USDC » @Quang Le  
+$19.36 USDC » @solsaver 
+
+🏁 Findings summary
+-----------------------------------------
+High risk findings: 6 total, 1 unique
+Med risk findings: 6 total, 1 unique
+QA reports: 12
+
+Awards will be distributed on Polygon within the next week.  Congratulations all!  💸 💸 💸
+
+*Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.*
+
+{Reactions}
+🎉 (14) hi5 (5) hyperfastparrot (2) ❤️‍🔥 (2) 
+
+[07/11/2023 21:14] dontonka#9878
+finally XD, some good results.
+
+
+[07/11/2023 22:25] 14si2o_flint
+holy hell I can't believe it
+
+{Reactions}
+🤣 hi5 
+
+[07/11/2023 23:45] thenaubit
+🥳
+
+
+[07/12/2023 03:13] devabdee
+Alhumdulilah. Congrats Everyone ❤️‍🔥
+
+
+[07/12/2023 08:31] evokid
+Congratulations guys 👍 and you @Franfran great job 👌
+
+{Reactions}
+🙏 
+
+[07/12/2023 23:32] theshogoki
+Good job guys, curious to see the findings.
+
+{Reactions}
+☝️ 
+
+[07/14/2023 00:19] chaduke#3730
+congrats to all!
+
+{Reactions}
+🙏 empathy 
+
+[07/15/2023 06:01] devabdee
+The awards of this contest will be sent on Polygon (USDC or Canot (canto)?
+
+
+[07/15/2023 06:02] devabdee
+I've previously received awards o Canto (Canto), so I don't have to set up anything again if the awards will be sent on canto. right?
+
+
+[07/15/2023 11:45] ihtishamsudo
+It was up to the warden if he wanted to receive awards in canto. But only those warden would be awarded with canto who applied for receiving awards in canto at the start of contest. If you didn’t applied for receiving awards in canto then you will get awards in USDC.
+
+{Reactions}
+thankyou (3) 
+
+[07/15/2023 16:07] devabdee
+Alright. Best hai. Thanks!
+You seem to be a nice guy 👀
+
+{Reactions}
+❤️ 
+
+[07/15/2023 17:15] itsmetechjay
+Yep @ihtishamsudo is correct.  Unless a warden opted in to receive awards in Canto, the payout is sent in USDC.
+
+{Reactions}
+👍 
+
+[07/15/2023 17:50] devabdee
+Thanks for the confirmation
+
+{Reactions}
+hi5 
+
+[07/16/2023 02:28] c145h
+Can't wait to see the report
+
+
+[07/17/2023 16:14] web3doc74
+Congrats everyone
+
+{Reactions}
+🤗 (2) 
+
+==============================================================
+Exported 83 message(s)
+==============================================================
