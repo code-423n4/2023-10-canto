@@ -1,61 +1,19 @@
-# ✨ So you want to run an audit
+# Canto Ambient Liquidity Mining audit details
 
-This `README.md` contains a set of checklists for our audit collaboration.
-
-Your audit will use two repos: 
-- **an _audit_ repo** (this one), which is used for scoping your audit and for providing information to wardens
-- **a _findings_ repo**, where issues are submitted (shared with you after the audit) 
-
-Ultimately, when we launch the audit, this repo will be made public and will contain the smart contracts to be reviewed and all the information needed for audit participants. The findings repo will be made public after the audit report is published and your team has mitigated the identified issues.
-
-Some of the checklists in this doc are for **C4 (🐺)** and some of them are for **you as the audit sponsor (⭐️)**.
-
----
-# Repo setup
-
-## ⭐️ Sponsor: Add code to this repo
-
-- [ ] Create a PR to this repo with the below changes:
-- [ ] Provide a self-contained repository with working commands that will build (at least) all in-scope contracts, and commands that will run tests producing gas reports for the relevant contracts.
-- [ ] Make sure your code is thoroughly commented using the [NatSpec format](https://docs.soliditylang.org/en/v0.5.10/natspec-format.html#natspec-format).
-- [ ] Please have final versions of contracts and documentation added/updated in this repo **no less than 48 business hours prior to audit start time.**
-- [ ] Be prepared for a 🚨code freeze🚨 for the duration of the audit — important because it establishes a level playing field. We want to ensure everyone's looking at the same code, no matter when they look during the audit. (Note: this includes your own repo, since a PR can leak alpha to our wardens!)
-
-
----
-
-## ⭐️ Sponsor: Edit this `README.md` file
-
-- [ ] Modify the contents of this `README.md` file. Describe how your code is supposed to work with links to any relevent documentation and any other criteria/details that the C4 Wardens should keep in mind when reviewing. ([Here's a well-constructed example.](https://github.com/code-423n4/2022-08-foundation#readme))
-- [ ] Review the Gas award pool amount. This can be adjusted up or down, based on your preference - just flag it for Code4rena staff so we can update the pool totals across all comms channels.
-- [ ] Optional / nice to have: pre-record a high-level overview of your protocol (not just specific smart contract functions). This saves wardens a lot of time wading through documentation.
-- [ ] [This checklist in Notion](https://code4rena.notion.site/Key-info-for-Code4rena-sponsors-f60764c4c4574bbf8e7a6dbd72cc49b4#0cafa01e6201462e9f78677a39e09746) provides some best practices for Code4rena audits.
-
-## ⭐️ Sponsor: Final touches
-- [ ] Review and confirm the details in the section titled "Scoping details" and alert Code4rena staff of any changes.
-- [ ] Check that images and other files used in this README have been uploaded to the repo as a file and then linked in the README using absolute path (e.g. `https://github.com/code-423n4/yourrepo-url/filepath.png`)
-- [ ] Ensure that *all* links and image/file paths in this README use absolute paths, not relative paths
-- [ ] Check that all README information is in markdown format (HTML does not render on Code4rena.com)
-- [ ] Remove any part of this template that's not relevant to the final version of the README (e.g. instructions in brackets and italic)
-- [ ] Delete this checklist and all text above the line below when you're ready.
-
----
-
-# Canto audit details
-- Total Prize Pool: $24,500 
-  - HM awards: $16,500
-  - Analysis awards: $1,000 
-  - QA awards: $500 
-  - Bot Race awards: $1,500
-  - Gas awards: $500
-  - Judge awards: $2,400
-  - Lookout awards: $1,600
-  - Scout awards: $500 USDC 
-- Join [C4 Discord](https://discord.gg/code4rena) to register
-- Submit findings [using the C4 form](https://code4rena.com/contests/2023-09-canto/submit)
-- [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
-- Starts October 04, 2023 20:00 UTC 
-- Ends October 10, 2023 20:00 UTC 
+-   Total Prize Pool: $24,500
+    -   HM awards: $16,500
+    -   Analysis awards: $1,000
+    -   QA awards: $500
+    -   Bot Race awards: $1,500
+    -   Gas awards: $500
+    -   Judge awards: $2,400
+    -   Lookout awards: $1,600
+    -   Scout awards: $500 USDC
+-   Join [C4 Discord](https://discord.gg/code4rena) to register
+-   Submit findings [using the C4 form](https://code4rena.com/contests/2023-09-canto/submit)
+-   [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
+-   Starts October 04, 2023 20:00 UTC
+-   Ends October 10, 2023 20:00 UTC
 
 ❗️Awarding Note for Wardens, Judges, and Lookouts: If you want to claim your awards in $ worth of CANTO, you must follow the steps outlined in [this thread](https://discord.com/channels/810916927919620096/1157328189731917855); otherwise you'll be paid out in USDC.
 
@@ -63,92 +21,211 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 
 Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-canto/blob/main/bot-report.md) within 24 hours of audit opening.
 
-*Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
+_Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards._
 
 [ ⭐️ SPONSORS: Are there any known issues or risks deemed acceptable that shouldn't lead to a valid finding? If so, list them here. ]
 
-
 # Overview
 
-[ ⭐️ SPONSORS: add info here ]
+# Canto Liquidity Mining Audit
 
-## Links
+## Overview
 
-- **Previous audits:** 
-- **Documentation:**
-- **Website:**
-- **Twitter:** 
-- **Discord:** 
+Canto is releasing a new liquidity mining feature, built specifically for [Ambient Finance](https://docs.ambient.finance/).
 
+We are implementing the feature as a sidecar contract that plugs into Ambient using their proxy contract pattern.
+
+To implement liquidity mining, we introduce 2 new contracts:
+
+-   `LiquidityMiningPath.sol` (provides interfaces for users to interact with the contract)
+-   `LiquidityMining.sol` (provides all of the logic)
+
+## About LiquidityMining Sidecar
+
+The LiquidityMining sidecar was built to implement a liquidity mining protocol for Ambient. Canto plans to use this sidecar to incentivize liquidity for Ambient pools deployed on Canto.
+
+#### Incentive Mechanism
+
+The LiquidityMining sidecar works by incentivizing a specific width of liquidity, based on the current tick. As Canto plans to use LiquidityMining to incentivize stable pools, the range currentTick-10 to currentTick+10 is incentivized. This means that the range in which a user provides liquidity **must be a superset** of [currentTick-10, currentTick+10] in order for them to receive incentives. If the user's range only includes part of [currentTick-10, currentTick+10], they will not receive incentives. In total, the user must be providing liquidity across at least 21 ticks (the current tick, and 10 on either side).
+
+It is expected that users will provide liquidity with a small buffer on either side of the range to ensure they will always be receiving rewards, even in the case of small price movements.
+
+#### Liquidity Mining Rewards
+
+From a high level, the idea behind the liquidity mining sidecar is to track the time weighted liquidity (global and per-user) for ambient & concentrated (per tick) positions. This enables the protocol to calculate the percentage of in-range liquidity that was provided by a user over a time span and then pays out this percentage of the global rewards to the user.
+
+Let's look at a simple example. If the rewards for 1 week are 10 CANTO, and only `LP A` is providing liquidity to the protocol, then`LP A` will receive all 10 CANTO as their reward.
+
+If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liquidity for the entirety of the week, they will split the rewards in half and each receive 5 CANTO.
+
+#### Implementation
+
+[These](https://github.com/Canto-Network/CrocSwap-protocol/blob/7566620ec5861ef910a89ba559120fd476847d66/contracts/callpaths/LiquidityMiningPath.sol#L31-L47) funtions are used to set the weekly reward rate for the liquidity mining sidecar. Reward rates are set by determining a total amount that will be disbursed per week. Governance can choose how many weeks that the reward rate will be set for.
+
+`LiquidityMining.sol` contains all of the logic for accruing and claiming rewards. This is the most important part of the codebase and should be the main focus for wardens.
 
 # Scope
 
-[ ⭐️ SPONSORS: add scoping and technical details here ]
-
-- [ ] In the table format shown below, provide the name of each contract and:
-  - [ ] source lines of code (excluding blank lines and comments) in each *For line of code counts, we recommend running prettier with a 100-character line length, and using [cloc](https://github.com/AlDanial/cloc).* 
-  - [ ] external contracts called in each
-  - [ ] libraries used in each
-
-*List all files in scope in the table below (along with hyperlinks) -- and feel free to add notes here to emphasize areas of focus.*
-
-| Contract | SLOC | Purpose | Libraries used |  
-| ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/sample.sol](contracts/folder/sample.sol) | 123 | This contract does XYZ | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
+| Contract                                                                                                 | SLOC                   | Purpose                                                                                                    | Libraries used                                             |
+| -------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [contracts/callpaths/LiquidityMiningPath.sol](canto-ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
+| [contracts/mixins/LiquidityMining.sol](canto-ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
 
 ## Out of scope
 
-*List any files/contracts that are out of scope for this audit.*
+All other contracts are out of scope. However, for the purpose of this audit, it may be useful to understand other Ambient Finance contracts.
 
 # Additional Context
 
-- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
-- [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
-- [ ] Please list specific ERC721 that your protocol is anticipated to interact with.
-- [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
-- [ ] Please list all trusted roles (e.g. operators, slashers, pausers, etc.), the privileges they hold, and any conditions under which privilege escalation is expected/allowable
-- [ ] In the event of a DOS, could you outline a minimum duration after which you would consider a finding to be valid? This question is asked in the context of most systems' capacity to handle DoS attacks gracefully for a certain period.
-- [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format: 
-  - `Contract1`: Should comply with `ERC/EIPX`
-  - `Contract2`: Should comply with `ERC/EIPY`
+## About Ambient Finance
+
+### Ambient Overview
+
+Ambient is a single-contract dex that allows liquidity providers to deposit "ambient" liquidity (uniV2 style) or concentrated liquidity (uniV3 style) into any token pair.
+
+The main contract in Ambient Finance is `CrocSwapDex`. This is the only contract that users will ever need to interface with.
+
+Ambient uses proxy contracts called "sidecars" which contain all of the logic that doesn't fit in `CrocSwapDex` due to the EVM contract limit. Sidecar contracts are modular in nature and each one is responsible for a unique function.
+
+**Sidecar Contracts:**
+
+-   BootPath
+    -   special sidecar contract used to install other sidecar contracts
+-   ColdPath
+    -   handles creation of new pools
+-   WarmPath
+    -   handles liquidity management, such as minting/burning
+-   **LiquidityMiningPath**
+    -   new sidecar developed by Canto to handle liquidity mining for both ambient and concentrated liquidity
+-   KnockoutPath
+    -   handles logic for knockout liquidity
+-   LongPath
+    -   contains logic for parsing and executing arbitrarily long compound orders
+-   MicroPaths
+    -   contains functions related to single atomic actions to be called within the context of a longer compound action on a pre-loaded pool's liquidity curve
+-   SafeModePath
+    -   for emergency mode
+
+### How to interact with Ambient Contracts
+
+To interact with Ambient, users must send ABI encoded parameters to the CrocSwapDex. For all actions that can be made by users, the `userCmd` function is used. For things related to governance, the `protocolCmd` function is used.
+
+The `userCmd` and `protocolCmd` function signatures are as shown:
+
+```solidity=
+function protocolCmd (uint16 callpath, bytes calldata cmd, bool sudo)
+function userCmd (uint16 callpath, bytes calldata cmd)
+```
+
+#### Callpath
+
+The `callpath` parameter is used to determine which sidecar contract to send the cmd to.
+
+Sidecar paths are defined below:
+
+```solidity=
+uint16 constant BOOT_PROXY_IDX = 0;
+uint16 constant SWAP_PROXY_IDX = 1;
+uint16 constant LP_PROXY_IDX = 2;
+uint16 constant COLD_PROXY_IDX = 3;
+uint16 constant LONG_PROXY_IDX = 4;
+uint16 constant MICRO_PROXY_IDX = 5;
+uint16 constant MULTICALL_PROXY_IDX = 6;
+uint16 constant KNOCKOUT_LP_PROXY_IDX = 7;
+uint16 constant LIQUIDITY_MINING_PROXY_IDX = 8;
+uint16 constant FLAG_CROSS_PROXY_IDX = 3500;
+uint16 constant SAFE_MODE_PROXY_PATH = 9999;
+```
+
+For example, if a user wanted to provide liquidity (which is handled by WarmPath), they would call the `userCmd` function with `callpath` set to 2.
+
+#### Cmd
+
+`cmd` is an ABI encoded calldata that is fed to the sidecar contract specified by `callpath`. The sidecar will parse the ABI encoded parameters in order to get all of the parameters necessary for the specific action that is desired.
+
+The first parameter that is encoded into `cmd` will always be the `code`. `code` is used to determine which specific function inside the sidecar will be called.
+
+Continuing the example from above, if a user wanted to provide liquidity, they call the WarmPath using `code` 11, which would would trigger the `mintConcentratedQty()` function inside WarmPath.
+
+Here is a sample transaction to provide liquidity, scripted in JS.
+
+```javascript
+const CrocSwapDex = await hre.ethers.getContractFactory("CrocSwapDex");
+const dex = await CrocSwapDex.attach(dexAddress);
+
+const currentTick = 276324;
+const ZERO_ADDR = "0x0000000000000000000000000000000000000000";
+
+// Mint concentrated liquidity
+let mintConcentratedLiqCmd = abi.encode(
+	[
+		"uint8",
+		"address",
+		"address",
+		"uint256",
+		"int24",
+		"int24",
+		"uint128",
+		"uint128",
+		"uint128",
+		"uint8",
+		"address",
+	],
+	[
+		11, // <== CODE (call function mintConcentratedQty in WarmPath)
+		cNoteAddress, // base token
+		usdcAddress, // quote token
+		36000, // poolIDX
+		currentTick - 10, // tickLower
+		currentTick + 10, // tickUpper
+		BigNumber.from("5000000000000000000"), // amount of base token to send
+		BigNumber.from("16602069666338596454400000"), // min price
+		BigNumber.from("20291418481080506777600000"), // max price
+		0, // reserve flag
+		ZERO_ADDR, // lp conduit address (0 if not using)
+	]
+);
+
+// use callpath 2 to send cmd to WarmPath, which handles liquidity management
+tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
+```
 
 ## Attack ideas (Where to look for bugs)
-*List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example*
+
+_List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example_
 
 ## Main invariants
-*Describe the project's main invariants (properties that should NEVER EVER be broken).*
 
-## Scoping Details 
+_Describe the project's main invariants (properties that should NEVER EVER be broken)._
+
+## Scoping Details
+
 [ ⭐️ SPONSORS: please confirm/edit the information below. ]
 
-
-| Question                                           | Answer                             |
-| -------------------------------------------------- | ---------------------------------- |
-| Repository                                         | https://github.com/Plex-Engineer/CrocSwap-protocol/pull/1 |
-| How many contracts are in scope                    | 2  |
-| Total SLoC for these contracts                     | 80  |
-| How many external imports are there?               | 3  |
-| How many separate interfaces and struct definitions are there for the contracts within scope? | 1 |
-| Does most of your code generally use composition or inheritance? | Inheritance |
-| How many external calls                            | 0  |
-| What is the overall line coverage percentage provided by your tests?: | 75 |
-| Please describe required context:                  |  |
-| Are there any novel or unique curve logic or mathematical models?: |  n/a |
-| Upgrade of existing system?                        | False - |
-| "All that apply" checked:                          | AMM, ERC-20 Token  |
-| Need to understand other part of codebase:         | Yes - |
-| Other codebase context | This is a liquidity mining protocol for Ambient Dex. As such, an understanding of Ambient Dex will be very helpful for this audit. However, it is not necessary to understand all parts of Ambient. Just an understanding of how providing liquidity works will be sufficient. |
-| Oracle                                             | No - |
-| Fork?                                              | False |
-| If fork, describe your customizations/differences: | |
-| Unique logic | concentrated liquidity (uni v3 style) |
-| Does it use a side chain?                          | False |
-| If yes, is it EVM-compatible?                      | |
-| Areas to focus on/break |This LM protocol will be used to incentivize pools on Canto. We would like to ensure that the amount of incentives released is exactly as we specify and the wallets who receive the incentives are the correct ones (LPing the correct ranges) |
-
+| Question                                                                                      | Answer                                                                                                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Repository                                                                                    | https://github.com/Plex-Engineer/CrocSwap-protocol/pull/1                                                                                                                                                                                                                      |
+| How many contracts are in scope                                                               | 2                                                                                                                                                                                                                                                                              |
+| Total SLoC for these contracts                                                                | 80                                                                                                                                                                                                                                                                             |
+| How many external imports are there?                                                          | 3                                                                                                                                                                                                                                                                              |
+| How many separate interfaces and struct definitions are there for the contracts within scope? | 1                                                                                                                                                                                                                                                                              |
+| Does most of your code generally use composition or inheritance?                              | Inheritance                                                                                                                                                                                                                                                                    |
+| How many external calls                                                                       | 0                                                                                                                                                                                                                                                                              |
+| What is the overall line coverage percentage provided by your tests?:                         | 75                                                                                                                                                                                                                                                                             |
+| Please describe required context:                                                             |                                                                                                                                                                                                                                                                                |
+| Are there any novel or unique curve logic or mathematical models?:                            | n/a                                                                                                                                                                                                                                                                            |
+| Upgrade of existing system?                                                                   | False -                                                                                                                                                                                                                                                                        |
+| "All that apply" checked:                                                                     | AMM, ERC-20 Token                                                                                                                                                                                                                                                              |
+| Need to understand other part of codebase:                                                    | Yes -                                                                                                                                                                                                                                                                          |
+| Other codebase context                                                                        | This is a liquidity mining protocol for Ambient Dex. As such, an understanding of Ambient Dex will be very helpful for this audit. However, it is not necessary to understand all parts of Ambient. Just an understanding of how providing liquidity works will be sufficient. |
+| Oracle                                                                                        | No -                                                                                                                                                                                                                                                                           |
+| Fork?                                                                                         | False                                                                                                                                                                                                                                                                          |
+| If fork, describe your customizations/differences:                                            |                                                                                                                                                                                                                                                                                |
+| Unique logic                                                                                  | concentrated liquidity (uni v3 style)                                                                                                                                                                                                                                          |
+| Does it use a side chain?                                                                     | False                                                                                                                                                                                                                                                                          |
+| If yes, is it EVM-compatible?                                                                 |                                                                                                                                                                                                                                                                                |
+| Areas to focus on/break                                                                       | This LM protocol will be used to incentivize pools on Canto. We would like to ensure that the amount of incentives released is exactly as we specify and the wallets who receive the incentives are the correct ones (LPing the correct ranges)                                |
 
 # Tests
 
-*Provide every step required to build the project from a fresh git clone, as well as steps to run the tests with a gas report.* 
-
-*Note: Many wardens run Slither as a first pass for testing.  Please document any known errors with no workaround.* 
+Check [README](canto-ambient/README.md)
