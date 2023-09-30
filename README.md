@@ -44,13 +44,13 @@ To implement liquidity mining, we introduce 2 new contracts:
 
 The LiquidityMining sidecar was built to implement a liquidity mining protocol for Ambient. Canto plans to use this sidecar to incentivize liquidity for Ambient pools deployed on Canto.
 
-#### Incentive Mechanism
+### Incentive Mechanism
 
 The LiquidityMining sidecar works by incentivizing a specific width of liquidity, based on the current tick. As Canto plans to use LiquidityMining to incentivize stable pools, the range currentTick-10 to currentTick+10 is incentivized. This means that the range in which a user provides liquidity **must be a superset** of [currentTick-10, currentTick+10] in order for them to receive incentives. If the user's range only includes part of [currentTick-10, currentTick+10], they will not receive incentives. In total, the user must be providing liquidity across at least 21 ticks (the current tick, and 10 on either side).
 
 It is expected that users will provide liquidity with a small buffer on either side of the range to ensure they will always be receiving rewards, even in the case of small price movements.
 
-#### Liquidity Mining Rewards
+### Liquidity Mining Rewards
 
 From a high level, the idea behind the liquidity mining sidecar is to track the time weighted liquidity (global and per-user) for ambient & concentrated (per tick) positions. This enables the protocol to calculate the percentage of in-range liquidity that was provided by a user over a time span and then pays out this percentage of the global rewards to the user.
 
@@ -58,7 +58,7 @@ Let's look at a simple example. If the rewards for 1 week are 10 CANTO, and only
 
 If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liquidity for the entirety of the week, they will split the rewards in half and each receive 5 CANTO.
 
-#### Implementation
+### Implementation
 
 [These](https://github.com/Canto-Network/CrocSwap-protocol/blob/7566620ec5861ef910a89ba559120fd476847d66/contracts/callpaths/LiquidityMiningPath.sol#L31-L47) funtions are used to set the weekly reward rate for the liquidity mining sidecar. Reward rates are set by determining a total amount that will be disbursed per week. Governance can choose how many weeks that the reward rate will be set for.
 
