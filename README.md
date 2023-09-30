@@ -10,7 +10,7 @@
     -   Lookout awards: $1,600
     -   Scout awards: $500 USDC
 -   Join [C4 Discord](https://discord.gg/code4rena) to register
--   Submit findings [using the C4 form](https://code4rena.com/contests/2023-09-canto/submit)
+-   Submit findings [using the C4 form](https://code4rena.com/contests/2023-10-canto/submit)
 -   [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
 -   Starts October 04, 2023 20:00 UTC
 -   Ends October 10, 2023 20:00 UTC
@@ -22,8 +22,6 @@
 Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-canto/blob/main/bot-report.md) within 24 hours of audit opening.
 
 _Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards._
-
-[ ⭐️ SPONSORS: Are there any known issues or risks deemed acceptable that shouldn't lead to a valid finding? If so, list them here. ]
 
 # Overview
 
