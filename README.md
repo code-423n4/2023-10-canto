@@ -77,9 +77,10 @@ All other contracts are out of scope. However, for the purpose of this audit, it
 
 # Additional Context
 
-## About Ambient Finance
-
 ### Ambient Overview
+
+- [Ambient Docs](https://docs.ambient.finance/)
+- [Ambient Github](https://github.com/CrocSwap/CrocSwap-protocol) (was formerly named CrocSwap)
 
 Ambient is a single-contract dex that allows liquidity providers to deposit "ambient" liquidity (uniV2 style) or concentrated liquidity (uniV3 style) into any token pair.
 
@@ -191,12 +192,8 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 ```
 
 ## Attack ideas (Where to look for bugs)
-
-_List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example_
-
-## Main invariants
-
-_Describe the project's main invariants (properties that should NEVER EVER be broken)._
+- liquidity providers being able to withdraw more rewards than they have accrued
+- liquidity providers getting less rewards than they are owed
 
 ## Scoping Details
 
