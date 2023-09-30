@@ -1,0 +1,14 @@
+*~
+tmp*
+\#*
+.\#*
+bld/
+node_modules/
+artifacts/
+cache/
+hardhat.config.js
+typechain/
+yarn-error.log
+tenderly.yaml
+coverage.json
+coverage/
