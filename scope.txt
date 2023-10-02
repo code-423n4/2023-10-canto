@@ -1,2 +1,2 @@
-canto-ambient/contracts/callpaths/LiquidityMiningPath.sol
-canto-ambient/contracts/mixins/LiquidityMining.sol
+canto_ambient/contracts/callpaths/LiquidityMiningPath.sol
+canto_ambient/contracts/mixins/LiquidityMining.sol
