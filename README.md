@@ -69,16 +69,23 @@ If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liq
 | [contracts/callpaths/LiquidityMiningPath.sol](canto-ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
 | [contracts/mixins/LiquidityMining.sol](canto-ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
 
+#### Ambient Hooks (where functions in `LiquidityMining.sol` are called)
+
+| Liquidity Mining Hooks                                                                     | Line Number                                                   | Purpose                                                                      |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [contracts/mixins/MarketSequencer.sol](canto-ambient/contracts/mixins/MarketSequencer.sol) | 244                                                           | Initializes tick tracking                                                    |
+| [contracts/mixins/TradeMatcher.sol](contracts/mixins/TradeMatcher.sol)                     | 67-68, 103-104, 140-142, 177-178, 244, 270, 342, 440-443, 486 | Logic to accrue rewards on dex actions such as minting and burning liquidity |
+
 ## Out of scope
 
-All other contracts are out of scope. However, for the purpose of this audit, it may be useful to understand other Ambient Finance contracts.
+All other contracts are out of scope. However, for the purpose of this audit, it will be useful to understand other Ambient Finance contracts.
 
 # Additional Context
 
 ### Ambient Overview
 
-- [Ambient Docs](https://docs.ambient.finance/)
-- [Ambient Github](https://github.com/CrocSwap/CrocSwap-protocol) (was formerly named CrocSwap)
+-   [Ambient Docs](https://docs.ambient.finance/)
+-   [Ambient Github](https://github.com/CrocSwap/CrocSwap-protocol) (was formerly named CrocSwap)
 
 Ambient is a single-contract dex that allows liquidity providers to deposit "ambient" liquidity (uniV2 style) or concentrated liquidity (uniV3 style) into any token pair.
 
@@ -190,8 +197,9 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 ```
 
 ## Attack ideas (Where to look for bugs)
-- liquidity providers being able to withdraw more rewards than they have accrued
-- liquidity providers getting less rewards than they are owed
+
+-   liquidity providers being able to withdraw more rewards than they have accrued
+-   liquidity providers getting less rewards than they are owed
 
 ## Scoping Details
 
@@ -199,9 +207,9 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 
 | Question                                                                                      | Answer                                                                                                                                                                                                                                                                         |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Repository                                                                                    | https://github.com/Canto-Network/CrocSwap-protocol/tree/audit-final                                                                                                                                                                                                                     |
+| Repository                                                                                    | https://github.com/Canto-Network/CrocSwap-protocol/tree/audit-final                                                                                                                                                                                                            |
 | How many contracts are in scope                                                               | 2                                                                                                                                                                                                                                                                              |
-| Total SLoC for these contracts                                                                | 145                                                                                                                                                                                                                                                                             |
+| Total SLoC for these contracts                                                                | 145                                                                                                                                                                                                                                                                            |
 | How many external imports are there?                                                          | 3                                                                                                                                                                                                                                                                              |
 | How many separate interfaces and struct definitions are there for the contracts within scope? | 1                                                                                                                                                                                                                                                                              |
 | Does most of your code generally use composition or inheritance?                              | Inheritance                                                                                                                                                                                                                                                                    |
