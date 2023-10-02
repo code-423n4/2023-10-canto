@@ -58,7 +58,7 @@ If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liq
 
 ### Implementation
 
-[These](https://github.com/Canto-Network/CrocSwap-protocol/blob/7566620ec5861ef910a89ba559120fd476847d66/contracts/callpaths/LiquidityMiningPath.sol#L31-L47) funtions are used to set the weekly reward rate for the liquidity mining sidecar. Reward rates are set by determining a total amount that will be disbursed per week. Governance can choose how many weeks that the reward rate will be set for.
+[These](https://github.com/Canto-Network/CrocSwap-protocol/blob/7566620ec5861ef910a89ba559120fd476847d66/contracts/callpaths/LiquidityMiningPath.sol#L31-L47) functions are used to set the weekly reward rate for the liquidity mining sidecar. Reward rates are set by determining a total amount that will be disbursed per week. Governance can choose how many weeks that the reward rate will be set for.
 
 `LiquidityMining.sol` contains all of the logic for accruing and claiming rewards. This is the most important part of the codebase and should be the main focus for wardens.
 
@@ -66,15 +66,15 @@ If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liq
 
 | Contract                                                                                                 | SLOC                   | Purpose                                                                                                    | Libraries used                                             |
 | -------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [contracts/callpaths/LiquidityMiningPath.sol](canto-ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
-| [contracts/mixins/LiquidityMining.sol](canto-ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
+| [canto-ambient/contracts/callpaths/LiquidityMiningPath.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
+| [canto-ambient/contracts/mixins/LiquidityMining.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
 
 #### Ambient Hooks (where functions in `LiquidityMining.sol` are called)
 
 | Liquidity Mining Hooks                                                                     | Line Number                                                   | Purpose                                                                      |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [contracts/mixins/MarketSequencer.sol](canto-ambient/contracts/mixins/MarketSequencer.sol) | 244                                                           | Initializes tick tracking                                                    |
-| [contracts/mixins/TradeMatcher.sol](contracts/mixins/TradeMatcher.sol)                     | 67-68, 103-104, 140-142, 177-178, 244, 270, 342, 440-443, 486 | Logic to accrue rewards on dex actions such as minting and burning liquidity |
+| [canto-ambient/contracts/mixins/MarketSequencer.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/contracts/mixins/MarketSequencer.sol) | 244                                                           | Initializes tick tracking                                                    |
+| [canto-ambient/contracts/mixins/TradeMatcher.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/contracts/mixins/TradeMatcher.sol)                     | 67-68, 103-104, 140-142, 177-178, 244, 270, 342, 440-443, 486 | Logic to accrue rewards on dex actions such as minting and burning liquidity |
 
 ## Out of scope
 
@@ -203,8 +203,6 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 
 ## Scoping Details
 
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
-
 | Question                                                                                      | Answer                                                                                                                                                                                                                                                                         |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Repository                                                                                    | https://github.com/Canto-Network/CrocSwap-protocol/tree/audit-final                                                                                                                                                                                                            |
@@ -229,6 +227,7 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 | If yes, is it EVM-compatible?                                                                 |                                                                                                                                                                                                                                                                                |
 | Areas to focus on/break                                                                       | This LM protocol will be used to incentivize pools on Canto. We would like to ensure that the amount of incentives released is exactly as we specify and the wallets who receive the incentives are the correct ones (LPing the correct ranges)                                |
 
-# Tests
+# Setup and Tests
 
-Check [README](canto-ambient/README.md)
+One-Liner: `cd canto-ambient && yarn install && npx hardhat compile && npx hardhat test`
+Check [canto-ambient/README.md](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/README.md)
