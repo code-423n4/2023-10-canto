@@ -1,19 +1,19 @@
 # Canto Ambient Liquidity Mining audit details
 
--   Total Prize Pool: $24,500
-    -   HM awards: $16,500
-    -   Analysis awards: $1,000
-    -   QA awards: $500
-    -   Bot Race awards: $1,500
-    -   Gas awards: $500
-    -   Judge awards: $2,400
-    -   Lookout awards: $1,600
-    -   Scout awards: $500 USDC
--   Join [C4 Discord](https://discord.gg/code4rena) to register
--   Submit findings [using the C4 form](https://code4rena.com/contests/2023-10-canto/submit)
--   [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
--   Starts October 04, 2023 20:00 UTC
--   Ends October 10, 2023 20:00 UTC
+- Total Prize Pool: $24,500
+  - HM awards: $16,500
+  - Analysis awards: $1,000
+  - QA awards: $500
+  - Bot Race awards: $1,500
+  - Gas awards: $500
+  - Judge awards: $2,400
+  - Lookout awards: $1,600
+  - Scout awards: $500 USDC
+- Join [C4 Discord](https://discord.gg/code4rena) to register
+- Submit findings [using the C4 form](https://code4rena.com/contests/2023-10-canto/submit)
+- [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
+- Starts October 04, 2023 20:00 UTC
+- Ends October 10, 2023 20:00 UTC
 
 ❗️Awarding Note for Wardens, Judges, and Lookouts: If you want to claim your awards in $ worth of CANTO, you must follow the steps outlined in [this thread](https://discord.com/channels/810916927919620096/1157328189731917855); otherwise you'll be paid out in USDC.
 
@@ -35,8 +35,8 @@ We are implementing the feature as a sidecar contract that plugs into Ambient us
 
 To implement liquidity mining, we introduce 2 new contracts:
 
--   `LiquidityMiningPath.sol` (provides interfaces for users to interact with the contract)
--   `LiquidityMining.sol` (provides all of the logic)
+- `LiquidityMiningPath.sol` (provides interfaces for users to interact with the contract)
+- `LiquidityMining.sol` (provides all of the logic)
 
 ## About LiquidityMining Sidecar
 
@@ -58,7 +58,7 @@ If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liq
 
 ### Implementation
 
-[These](https://github.com/Canto-Network/CrocSwap-protocol/blob/7566620ec5861ef910a89ba559120fd476847d66/contracts/callpaths/LiquidityMiningPath.sol#L31-L47) funtions are used to set the weekly reward rate for the liquidity mining sidecar. Reward rates are set by determining a total amount that will be disbursed per week. Governance can choose how many weeks that the reward rate will be set for.
+[These](https://github.com/Canto-Network/CrocSwap-protocol/blob/7566620ec5861ef910a89ba559120fd476847d66/contracts/callpaths/LiquidityMiningPath.sol#L31-L47) functions are used to set the weekly reward rate for the liquidity mining sidecar. Reward rates are set by determining a total amount that will be disbursed per week. Governance can choose how many weeks that the reward rate will be set for.
 
 `LiquidityMining.sol` contains all of the logic for accruing and claiming rewards. This is the most important part of the codebase and should be the main focus for wardens.
 
@@ -66,8 +66,8 @@ If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liq
 
 | Contract                                                                                                 | SLOC                   | Purpose                                                                                                    | Libraries used                                             |
 | -------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [contracts/callpaths/LiquidityMiningPath.sol](canto-ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
-| [contracts/mixins/LiquidityMining.sol](canto-ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
+| [canto-ambient/contracts/callpaths/LiquidityMiningPath.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
+| [canto-ambient/contracts/mixins/LiquidityMining.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](canto-ambient/contracts/libraries/SafeCast.sol) |
 
 ## Out of scope
 
@@ -88,22 +88,22 @@ Ambient uses proxy contracts called "sidecars" which contain all of the logic th
 
 **Sidecar Contracts:**
 
--   BootPath
-    -   special sidecar contract used to install other sidecar contracts
--   ColdPath
-    -   handles creation of new pools
--   WarmPath
-    -   handles liquidity management, such as minting/burning
--   **LiquidityMiningPath**
-    -   new sidecar developed by Canto to handle liquidity mining for both ambient and concentrated liquidity
--   KnockoutPath
-    -   handles logic for knockout liquidity
--   LongPath
-    -   contains logic for parsing and executing arbitrarily long compound orders
--   MicroPaths
-    -   contains functions related to single atomic actions to be called within the context of a longer compound action on a pre-loaded pool's liquidity curve
--   SafeModePath
-    -   for emergency mode
+- BootPath
+  - special sidecar contract used to install other sidecar contracts
+- ColdPath
+  - handles creation of new pools
+- WarmPath
+  - handles liquidity management, such as minting/burning
+- **LiquidityMiningPath**
+  - new sidecar developed by Canto to handle liquidity mining for both ambient and concentrated liquidity
+- KnockoutPath
+  - handles logic for knockout liquidity
+- LongPath
+  - contains logic for parsing and executing arbitrarily long compound orders
+- MicroPaths
+  - contains functions related to single atomic actions to be called within the context of a longer compound action on a pre-loaded pool's liquidity curve
+- SafeModePath
+  - for emergency mode
 
 ### How to interact with Ambient Contracts
 
@@ -157,32 +157,32 @@ const ZERO_ADDR = "0x0000000000000000000000000000000000000000";
 
 // Mint concentrated liquidity
 let mintConcentratedLiqCmd = abi.encode(
-	[
-		"uint8",
-		"address",
-		"address",
-		"uint256",
-		"int24",
-		"int24",
-		"uint128",
-		"uint128",
-		"uint128",
-		"uint8",
-		"address",
-	],
-	[
-		11, // <== CODE (call function mintConcentratedQty in WarmPath)
-		cNoteAddress, // base token
-		usdcAddress, // quote token
-		36000, // poolIDX
-		currentTick - 10, // tickLower
-		currentTick + 10, // tickUpper
-		BigNumber.from("5000000000000000000"), // amount of base token to send
-		BigNumber.from("16602069666338596454400000"), // min price
-		BigNumber.from("20291418481080506777600000"), // max price
-		0, // reserve flag
-		ZERO_ADDR, // lp conduit address (0 if not using)
-	]
+ [
+  "uint8",
+  "address",
+  "address",
+  "uint256",
+  "int24",
+  "int24",
+  "uint128",
+  "uint128",
+  "uint128",
+  "uint8",
+  "address",
+ ],
+ [
+  11, // <== CODE (call function mintConcentratedQty in WarmPath)
+  cNoteAddress, // base token
+  usdcAddress, // quote token
+  36000, // poolIDX
+  currentTick - 10, // tickLower
+  currentTick + 10, // tickUpper
+  BigNumber.from("5000000000000000000"), // amount of base token to send
+  BigNumber.from("16602069666338596454400000"), // min price
+  BigNumber.from("20291418481080506777600000"), // max price
+  0, // reserve flag
+  ZERO_ADDR, // lp conduit address (0 if not using)
+ ]
 );
 
 // use callpath 2 to send cmd to WarmPath, which handles liquidity management
@@ -190,16 +190,15 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 ```
 
 ## Attack ideas (Where to look for bugs)
+
 - liquidity providers being able to withdraw more rewards than they have accrued
 - liquidity providers getting less rewards than they are owed
 
 ## Scoping Details
 
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
-
 | Question                                                                                      | Answer                                                                                                                                                                                                                                                                         |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Repository                                                                                    | https://github.com/Canto-Network/CrocSwap-protocol/tree/audit-final                                                                                                                                                                                                                     |
+| Repository                                                                                    | <https://github.com/Canto-Network/CrocSwap-protocol/tree/audit-final>                                                                                                                                                                                                                     |
 | How many contracts are in scope                                                               | 2                                                                                                                                                                                                                                                                              |
 | Total SLoC for these contracts                                                                | 145                                                                                                                                                                                                                                                                             |
 | How many external imports are there?                                                          | 3                                                                                                                                                                                                                                                                              |
@@ -221,6 +220,7 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 | If yes, is it EVM-compatible?                                                                 |                                                                                                                                                                                                                                                                                |
 | Areas to focus on/break                                                                       | This LM protocol will be used to incentivize pools on Canto. We would like to ensure that the amount of incentives released is exactly as we specify and the wallets who receive the incentives are the correct ones (LPing the correct ranges)                                |
 
-# Tests
+# Setup and Tests
 
-Check [README](canto-ambient/README.md)
+One-Liner: `cd canto-ambient && yarn install && npx hardhat compile && npx hardhat test`
+Check [canto-ambient/README.md](https://github.com/code-423n4/2023-10-canto/blob/main/canto-ambient/README.md)
