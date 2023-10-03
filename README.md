@@ -10,16 +10,16 @@
     -   Lookout awards: $1,600
     -   Scout awards: $500 USDC
 -   Join [C4 Discord](https://discord.gg/code4rena) to register
--   Submit findings [using the C4 form](https://code4rena.com/contests/2023-10-canto/submit)
+-   Submit findings [using the C4 form](https://code4rena.com/contests/2023-10-canto-liquidity-mining-protocol/submit)
 -   [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
--   Starts October 04, 2023 20:00 UTC
--   Ends October 10, 2023 20:00 UTC
+-   Starts October 03, 2023 20:00 UTC
+-   Ends October 06, 2023 20:00 UTC
 
 ❗️Awarding Note for Wardens, Judges, and Lookouts: If you want to claim your awards in $ worth of CANTO, you must follow the steps outlined in [this thread](https://discord.com/channels/810916927919620096/1157328189731917855); otherwise you'll be paid out in USDC.
 
 ## Automated Findings / Publicly Known Issues
 
-Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-canto/blob/main/bot-report.md) within 24 hours of audit opening.
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-canto-liquidity-mining-protocol/blob/main/bot-report.md) within 24 hours of audit opening.
 
 _Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards._
 
@@ -66,8 +66,8 @@ If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liq
 
 | Contract                                                                                                 | SLOC                   | Purpose                                                                                                    | Libraries used                                             |
 | -------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [canto_ambient/contracts/callpaths/LiquidityMiningPath.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](canto_ambient/contracts/libraries/SafeCast.sol) |
-| [canto_ambient/contracts/mixins/LiquidityMining.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](canto_ambient/contracts/libraries/SafeCast.sol) |
+| [canto_ambient/contracts/callpaths/LiquidityMiningPath.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/libraries/SafeCast.sol) |
+| [canto_ambient/contracts/mixins/LiquidityMining.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/libraries/SafeCast.sol) |
 
 #### Ambient Hooks (where functions in `LiquidityMining.sol` are called)
 
