@@ -19,7 +19,7 @@
 
 ## Automated Findings / Publicly Known Issues
 
-Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-canto-liquidity-mining-protocol/blob/main/bot-report.md) within 24 hours of audit opening.
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2023-10-canto/blob/main/bot-report.md) within 24 hours of audit opening.
 
 _Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards._
 
