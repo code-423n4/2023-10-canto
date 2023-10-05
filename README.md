@@ -62,19 +62,12 @@ If there are 2 liquidity providers, `LP A` and `LP B`, and they each provide liq
 
 `LiquidityMining.sol` contains all of the logic for accruing and claiming rewards. This is the most important part of the codebase and should be the main focus for wardens.
 
-# Scope
+## Scope
 
 | Contract                                                                                                 | SLOC                   | Purpose                                                                                                    | Libraries used                                             |
 | -------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | [canto_ambient/contracts/callpaths/LiquidityMiningPath.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/callpaths/LiquidityMiningPath.sol) | 19                     | This contract provides the interface for the CrocSwapDex contract to call with `userCmd` and `protocolCmd` | [SafeCast](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/libraries/SafeCast.sol) |
 | [canto_ambient/contracts/mixins/LiquidityMining.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/LiquidityMining.sol)               | 126 (before formatter) | This contract contains the logic used for liquidity mining                                                 | [SafeCast](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/libraries/SafeCast.sol) |
-
-#### Ambient Hooks (where functions in `LiquidityMining.sol` are called)
-
-| Liquidity Mining Hooks                                                                     | Line Number                                                   | Purpose                                                                      |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [canto_ambient/contracts/mixins/MarketSequencer.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/MarketSequencer.sol) | 244                                                           | Initializes tick tracking                                                    |
-| [canto_ambient/contracts/mixins/TradeMatcher.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/TradeMatcher.sol)                     | 67-68, 103-104, 140-142, 177-178, 244, 270, 342, 440-443, 486 | Logic to accrue rewards on dex actions such as minting and burning liquidity |
 
 ## Out of scope
 
@@ -200,6 +193,16 @@ tx = await dex.userCmd(2, mintConcentratedLiqCmd, { gasLimit: 6000000 });
 
 -   liquidity providers being able to withdraw more rewards than they have accrued
 -   liquidity providers getting less rewards than they are owed
+
+## Ambient Hooks (where functions in `LiquidityMining.sol` are called)
+
+The following lines are not in Scope. They're provided to easily see how the integration works.
+
+| Liquidity Mining Hooks                                                                     | Line Number                                                   | Purpose                                                                      |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [canto_ambient/contracts/mixins/MarketSequencer.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/MarketSequencer.sol) | 244                                                           | Initializes tick tracking                                                    |
+| [canto_ambient/contracts/mixins/TradeMatcher.sol](https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/TradeMatcher.sol)                     | 67-68, 103-104, 140-142, 177-178, 244, 270, 342, 440-443, 486 | Logic to accrue rewards on dex actions such as minting and burning liquidity |
+
 
 ## Scoping Details
 
