@@ -1,0 +1,1092 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q4-2023 / canto-oct3
+==============================================================
+
+[09/29/2023 14:48] itsmetechjay (pinned)
+👋 Hello and welcome to the audit channel for the $24,500 **Canto Liquidity Mining Protocol** audit!
+
+📆 Audit opens Tuesday, 03 October 2023 20:00 (20:00 UTC) and runs through Friday, 06 October 2023 20:00 (20:00 UTC) (3 days).
+
+Please give a warm welcome to the Canto team, particularly @kt_nowk and @Roman, who will be available for questions either here in the channel or via DM, in the CEST and EST timezones.
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/contests/2023-10-canto-liquidity-mining-protocol#top
+
+{Reactions}
+👍 (7) 🦅 (2) 
+
+[09/29/2023 14:49] itsmetechjay (pinned)
+For this audit, you have the option to be paid out in USDC or CANTO.  If you want to claim your awards in $ worth of CANTO, please follow the steps in the thread prior to the audit close: Friday, 06 October 2023 20:00.  If you do not follow the steps in the thread, any earned rewards will be paid out in USDC.
+
+Details in thread 👉
+
+{Reactions}
+👍 (3) 
+
+[09/29/2023 14:51] itsmetechjay
+Pinned a message.
+
+
+[09/29/2023 14:51] itsmetechjay
+Pinned a message.
+
+
+[10/03/2023 07:34] 0xjaypi
+https://code4rena.com/contests/2023-10-canto-liquidity-mining-protocol#top new link, for reference
+
+{Embed}
+https://code4rena.com/contests/2023-10-canto-liquidity-mining-protocol
+Code4rena
+Code4rena is a competitive audit platform that finds more high-severity vulnerabilities, more quickly than any other auditing method.
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/c4-og-banner-D1BAB.png
+
+{Reactions}
+💯 (5) thankyou (4) checkmark (2) ❤️ 
+
+[10/03/2023 20:09] ktnowk
+Hey everyone, looking forward to working together with y’all on this audit! We’re always here to answer any questions
+
+{Reactions}
+👋 (10) 
+
+[10/03/2023 20:21] superman_i4g
+Hello; are the ambient files in scope?
+
+
+[10/03/2023 20:22] sovaslava9
+Hello. Does files in scope were audited previously? I see folder audits.
+
+
+[10/03/2023 20:24] ktnowk
+check out the "scope" section to see what's in scope. not all of the ambient files are in scope
+
+{Reactions}
+💯 (2) 
+
+[10/03/2023 20:25] ktnowk
+files in scope were not audited previously. All of the other files were audited
+
+{Reactions}
+👍 (2) 
+
+[10/03/2023 20:50] banditx0x
+I feel like the scope is actually far larger than the SLOC suggests
+
+{Reactions}
+✅ 
+
+[10/03/2023 20:51] banditx0x
+due to the integration with a complex external protocol
+
+
+[10/03/2023 21:04] ktnowk
+Yeah, there's definitely a learning curve since it's an ambient integration. With well-known protocols like uniswap or compound we can expect wardens to already understand the underlying protocol. Since ambient is new, likely most people won't know about it. We tried to include the background info we thought was necessary for the audit. If you guys have any other questions about ambient, please don't hesitate to ask
+
+{Reactions}
+👍 
+
+[10/03/2023 21:25] 0xnevi
+CLMM is never easy...goodluck friend im sure u will do well!
+
+
+[10/03/2023 21:51] banditx0x
+Thanks, you too!
+
+{Reactions}
+❤️ 
+
+[10/03/2023 22:06] _theblackpanther
+I am new to auditing and this convo is some next level 🤣🙏❤️
+
+
+[10/03/2023 22:37] banditx0x
+@0xTheBlackPanther CLMM is a concentrated liquidity market maker. Uniswap V3 is an example of this. Good luck for this contest, although as this conversation alludes to, this codebase isn't as beginner friendly as other "small" contests
+
+{Reactions}
+❤️ (2) 👍 
+
+[10/03/2023 22:58] _theblackpanther
+Thanks a lot for explaining, do we have a beginner guide to start with audits? I did followed Patrick Collins course and already have 5 years of dev experience but want to explore the audit side more.
+
+
+[10/03/2023 22:59] 0xnevi
+You are on the right guide, that is to just start auditing and trying to research and figure things out
+
+{Reactions}
+❤️ 
+
+[10/03/2023 23:10] banditx0x
+5 years of dev experience is far more than most of us here
+
+{Reactions}
+👍 
+
+[10/03/2023 23:53] _theblackpanther
+It’s in web development
+
+{Reactions}
+🤣 
+
+[10/04/2023 02:04] elvinfevo1
+I swear 🥲
+
+
+[10/04/2023 05:09] 0x11singh99
+differnece between  Canto and Ambient  ?
+
+
+[10/04/2023 05:12] ktnowk
+Ambient is a dex, Canto is building a liquidity mining protocol for Ambient dex
+
+basically means we are trying to create a protocol that can incentivize liquidity in Ambient
+
+
+[10/04/2023 05:16] 0x11singh99
+Canto is blockchain  or just a org.
+
+
+[10/04/2023 05:16] ktnowk
+Canto is a blockchain
+
+{Reactions}
+👍 
+
+[10/04/2023 05:28] alymurtazamemon
+is the `TestLiquidityMining.js` only test file?
+
+
+[10/04/2023 05:29] alymurtazamemon
+for code in scope
+
+
+[10/04/2023 05:30] ktnowk
+Yes
+
+
+[10/04/2023 05:32] ktnowk
+there are many other tests that ensure the integration doesn't break ambient, but only that one tests the liquidity mining logic directly
+
+{Reactions}
+👍 
+
+[10/04/2023 07:25] alymurtazamemon
+Please confirm, `protocolCmd`, `userCmd` and all other functions they use internally are not in scope, right?
+
+
+[10/04/2023 07:26] ktnowk
+the protocolCmd and userCmd in CrocSwapDex is not in scope, as that is a delegate call to the same commands in LiquidityMiningPath.sol
+
+the protocoCmd and usercmd in LiquidityMiningPath.sol are in scope
+
+{Reactions}
+👍 
+
+[10/04/2023 08:19] ktnowk
+Hey all, just a quick note
+
+if you are having trouble with dependencies when compiling or running tests, try installing dependencies again with Node v16.
+
+
+[10/04/2023 08:43] plamkata
+Are there any docs for the liquidity mining specifically
+
+
+[10/04/2023 08:47] ktnowk
+https://github.com/code-423n4/2023-10-canto#about-liquiditymining-sidecar
+
+these are the docs for liquidity mining mechanism. There are also comments in mixins/LiquidityMining.sol which you may find useful
+
+otherwise, @Roman and I are here to answer more specific questions about the liquidity mining
+
+
+[10/04/2023 08:47] ktnowk
+https://discord.com/channels/810916927919620096/1153772837409144912/1159049079645536366
+
+
+[10/04/2023 09:08] raxhvl
+When i try to run 
+`npx hardhat test test_canto/TestLiquidityMining.js`
+I get the following error
+
+```
+ 1) Liquidity Mining Tests
+       deploy contracts and init pool:
+     TypeError: ethers.deployContract is not a function
+      at Context.<anonymous> (test_canto/TestLiquidityMining.js:41:32)
+```
+Is this something the team has encountered before?
+
+Node version: `v16.20.2`
+
+
+[10/04/2023 09:18] ktnowk
+Hm some others had this issue
+
+Can you try re-cloning the repo while using Node v16 from the start? That seemed to fix it for other wardens
+
+{Reactions}
+✅ 
+
+[10/04/2023 09:22] ktnowk
+Also, could I suggest wardens who want to ask questions privately to use the Private Threads feature instead of DMing? And to add both @Roman and me, that way we can both see the questions.
+
+{Reactions}
+👍 
+
+[10/04/2023 09:38] mysticalpistachio
+Can we call LiquidityMiningPath.sol functions directly for security testing / poc , or it has to be through protocolCmd / userCmd in order to respect the original test case ?
+
+
+[10/04/2023 10:02] lambda9382
+Calling them directly will result in wrong results, because the call paths do not hold any state. All state is held by the `CrocSwapDex` contract, which `delegatecall`s to the call paths. That's  similar to the ERC-2535 Diamond pattern (where the facets are `delegatecall`ed from the diamond) in case you are familiar with this
+
+
+[10/04/2023 10:12] mysticalpistachio
+understood, thank you
+
+
+[10/04/2023 11:51] banditx0x
+@kt_nowk dm'ed you
+
+
+[10/04/2023 12:17] sovaslava9
+Cant understand difference between setAmbRewards() and setConcRewards.. could you explain please?
+
+
+[10/04/2023 13:28] 0xhelium
+when i run npx hardhat compile i get
+
+
+[10/04/2023 13:29] 0xhelium
+```Solidity 0.8.19 is not fully supported yet. You can still use Hardhat, but some features, like stack traces, might not work correctly.
+
+Learn more at https://hardhat.org/hardhat-runner/docs/reference/solidity-support
+
+[
+  {
+    version: '0.8.19',
+    settings: { optimizer: [Object], viaIR: true, outputSelection: [Object] }
+  }
+]
+```
+
+
+[10/04/2023 13:29] 0xhelium
+and it's basically stuck after this . any workaround ?
+
+
+[10/04/2023 13:31] ktnowk
+ambient rewards = rewards for uni v2 style, constant product AMM liquidity
+
+concentrated rewards = rewards for uni v3 style (concentrated) liquidity
+
+
+[10/04/2023 13:31] ktnowk
+i think you might need to let it run a bit longer
+
+
+[10/04/2023 13:31] ktnowk
+it can take a while for contracts to compile. once they are compiled it's cached so subsequent scripts/tests will run quickly
+
+
+[10/04/2023 13:42] sovaslava9
+so.. user could get rewards, using 2 functions and 1 poolId?
+
+
+[10/04/2023 13:44] _carla_
+Confirmed on my side, it takes a bit but all compile at the end 🙂 thanks
+
+
+[10/04/2023 13:45] 0xdemonnn
+@kt_nowk send a dm :gummy_wink:
+
+
+[10/04/2023 13:48] banditx0x
+I think yes, if you deposit concentrated liquidity and ambient liquidity into the same pool, you get rewards
+
+
+[10/04/2023 13:48] banditx0x
+However this is by design, as the rewards are proportional to the amount of liquidity you provide. You will have to split your capital between concentrated and ambient liquidity if you do this,
+
+
+[10/04/2023 17:59] banditx0x
+Question: Is the tick size for Ambient the same as Uniswap v3?
+
+
+[10/04/2023 18:05] Message Wolf#0225 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Automated findings output for the audit can be found [here](https://gist.github.com/code423n4/59002a10bbf69fc556e1c1dd8765c458).
+
+*Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
+
+
+[10/04/2023 18:07] itsmetechjay
+Pinned a message.
+
+
+[10/04/2023 18:09] ktnowk
+tick size in Ambient is actually customizable. 
+
+if you're curious you can check it out in pool templates
+
+however, we will be using the same tick sizes as Uni v3 where 1 tick = 1 bps, or 0.01%
+
+
+[10/04/2023 23:13] sovaslava9
+User could only 1 concentrate position put to pool?
+
+
+[10/04/2023 23:31] kelvineth
+youre not the only one
+
+{Reactions}
+keknervous 
+
+[10/04/2023 23:31] banditx0x
+A user can create multiple concentrated liquidity positions in a single pool. These positions are rewarded for and accounted seperately. The concentratedLiquidity functions take in `(address payable owner, bytes32 poolIdx, int24 lowerTick, int24 upperTick)` In the same pool you can have different position ranges corresponding to different lower ticks and upper ticks
+
+{Reactions}
+🙏🏼 
+
+[10/04/2023 23:35] _theblackpanther
+i think it would be great if there was some kinda internship/fellowship program here. or maybe the expert auditors allow some new auditors to work with them and assist them in their work. this way both would benefit.
+
+
+[10/04/2023 23:37] doogiedog
+There seems to be a large step between writing your own solidity contracts and auditing them that's hard to make. Seem to need to know the fundamentals of the protocol before even starting, like tick math and AMM concepts.
+
+{Reactions}
+💜 
+
+[10/04/2023 23:39] doogiedog
+Then after learning all that and a maiadao audit is available means starting basically from scratch
+
+{Reactions}
+🙏 
+
+[10/04/2023 23:40] banditx0x
+I'm not sure how a new auditor could assist an experienced one
+
+
+[10/04/2023 23:41] banditx0x
+I was basically an intern at a firm, and i felt like i couldnt really contribute tbh
+
+
+[10/04/2023 23:41] banditx0x
+well i still am haha (apprentice)
+
+
+[10/04/2023 23:41] _theblackpanther
+this is what chatGPT says "As a new auditor, I bring fresh perspectives and a strong commitment to supporting experienced auditors. I can assist with research, documentation, code review, quality assurance, testing, communication, and quick adaptation to new tools and methodologies. My goal is to enhance the audit process and contribute to identifying and addressing security concerns effectively"
+
+{Reactions}
+😆 (2) 
+
+[10/04/2023 23:41] _theblackpanther
+:BigBrain:
+
+
+[10/04/2023 23:46] banditx0x
+i've never written solidity apart from tests haha
+
+{Reactions}
+🤣 (4) 
+
+[10/04/2023 23:47] _theblackpanther
+interesting, so you started auditing directly? or you do have formal web2 security experties?
+
+
+[10/04/2023 23:47] illilli000
+this channel is for discussing this specific contest - plese move other discussions to the chat channel
+
+{Reactions}
+🙏 (5) C4Keycap 
+
+[10/04/2023 23:53] kelvineth
+i think i can survuve after assistance with one contest
+
+{Reactions}
+🤨 
+
+[10/05/2023 00:13] lsaudit
+@Roman - hey, i've sent you DM, could you please check it in your spare time?
+
+{Reactions}
+👍 
+
+[10/05/2023 03:53] 0x3b
+Should we fully aduit `MarketSequencer.sol` or are interested in the functions that `LiquidityMining.sol` is used
+
+
+[10/05/2023 04:11] sandnallani
+The one liner install, compile and test worked wonderfully. Smoothest project install and test so far.
+
+
+[10/05/2023 06:37] harsh123456789
+What is tickTracking, how does it works
+
+
+[10/05/2023 08:01] lambda9382
+Only the changes that are mentioned in the contest page, the rest of `MarketSequencer.sol` that is not mentioned in the contest page was not changed
+
+
+[10/05/2023 08:02] lambda9382
+The array stores the information when a tick is entered / exited. Whenever one is entered, a new entry is appended (with the entry timestamp) and when the tick is exited, the exit timestamp of this entry is set
+
+
+[10/05/2023 08:22] _3doc_
+The contest scope seems quite specific on the lines that were changed in pre-existing contracts. If a bug comes from something that "should've been changed" and was not, would that be in scope?
+
+
+[10/05/2023 08:39] vad37
+I am having trouble understanding which contract is using two RangePosition in storage layout.
+New `LiquidityMining` obviously using new `potitions72_` storage as from new deployed contract sidecar.
+Who is accessing old `position_` though, I know it go through old version `TradeMatcher.lookupPosition`. So previous deployed sidecar must still have access to this storage so user can withdraw their old deposit/position
+
+
+[10/05/2023 08:41] vad37
+Does old `positions_` storage become deprecated after new sidecar update? Or the new `positions72` not backward compatible with old position and only used for new `LiquidityMiningPath`?
+
+
+[10/05/2023 08:44] lambda9382
+I would say so, yes
+
+{Reactions}
+👍 
+
+[10/05/2023 08:46] lambda9382
+In our case that is not really relevant because we will do the initial deployment in this state, so there will be no old positions to consider. Not sure how Ambient manages this, they may have a sidecar for migration
+
+
+[10/05/2023 08:48] vad37
+So this is a fork project and a completely new deployment?
+
+
+[10/05/2023 08:50] lambda9382
+Yes, it is a fork of https://ambient.finance/, but the Ambient DEX does not exist so far on CANTO, so it will also be the first deployment of Ambient on CANTO
+
+{Embed}
+https://ambient.finance/,
+Ambient Finance
+Swap cryptocurrencies like a pro with Ambient. Decentralized trading is now better than ever.
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/previewImage-169DD.png
+
+
+[10/05/2023 08:51] vad37
+Hmm should clarify this on Readme.md. I thought this project deployed along with Ambient project on mainnet
+
+
+[10/05/2023 09:21] dravee
+The scope is only what you can find under https://github.com/code-423n4/2023-10-canto/blob/main/scope.txt, meaning the 2 contracts
+The lines mentioned after the Scope table [here](https://github.com/code-423n4/2023-10-canto#ambient-hooks-where-functions-in-liquidityminingsol-are-called) are just for context
+The scoping details also mention that only 2 contracts are in scope: https://github.com/code-423n4/2023-10-canto#scoping-details
+
+{Embed}
+https://github.com/code-423n4/2023-10-canto
+GitHub - code-423n4/2023-10-canto
+Contribute to code-423n4/2023-10-canto development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/2456c543-d1a0-407b-ab11-042e63522129-2432D
+
+
+[10/05/2023 09:28] _3doc_
+Hi,  thanks for jumping in. If we leave the scoping details aside, the scope.txt seems in contrast with the main audit page scope: https://github.com/code-423n4/2023-10-canto#scope
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/image-09874.png
+
+
+[10/05/2023 09:32] polaris_tow
+Hi ,do we have corresponding test files for this?
+
+
+[10/05/2023 11:36] sovaslava9
+What is tickTrackingIndexAccruedUpTo_ mapping?
+
+
+[10/05/2023 12:31] lambda9382
+Stores for a position & tick which indices of the tick tracking array were already accrued to avoid that we have to iterate over them again
+
+
+[10/05/2023 12:50] sovaslava9
+Where I can find code of open and close positions?
+
+
+[10/05/2023 13:11] xariextz
+Sent DM @Roman
+
+{Reactions}
+👍 
+
+[10/05/2023 13:17] sovaslava9
+Could you explain these lines please? https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/LiquidityMining.sol#L142-L146
+
+{Embed}
+https://github.com/code-423n4/2023-10-canto/blob/main/canto_ambient/contracts/mixins/LiquidityMining.sol
+2023-10-canto/canto_ambient/contracts/mixins/LiquidityMining.sol at...
+Contribute to code-423n4/2023-10-canto development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/2456c543-d1a0-407b-ab11-042e63522129-2432D
+
+
+[10/05/2023 14:48] lambda9382
+That's the initialization. When a tick is currently in range, we need to start the accrual from the current tracking data because the user is eligible for rewards for parts of the time that this tick was in-range (starting from the moment when they provided liquidity). When a tick is not in range, we never need to consider the historical tracking data because these are in the past when the user did not provide liquidity yet
+
+
+[10/05/2023 14:50] saint6704
+but user can only have 1 ambient liquidity position right?
+
+
+[10/05/2023 14:52] sovaslava9
+One for specific lowtickANDhighTick. But in pool user could have more than one position... i think
+
+{Reactions}
+👍 
+
+[10/05/2023 14:52] ktnowk
+for ambient liquidity, that's correct. if you mint or burn ambient liquidity, you are just modifying the existing position
+
+{Reactions}
+🫡 (2) 
+
+[10/05/2023 15:01] borongod
+Would Ambient only be deployed on CANTO?
+
+
+[10/05/2023 15:03] borongod
+Ah its on Etherum😂
+
+{Reactions}
+goose 
+
+[10/05/2023 15:03] ktnowk
+ambient is currently live on ethereum mainnet
+
+{Reactions}
+🫡 
+
+[10/05/2023 16:23] dravee
+Started a thread.
+
+
+[10/05/2023 19:23] sovaslava9
+If i change amount of ambient position, it wil le new positon (old closed) or position just change seeds_ value?
+
+
+[10/05/2023 19:42] sandnallani
+Could you talk a little about the logic implemented in the  functions `initTickTracking` and  `crossTicks`  as they're being invoked in contracts TraderMatcher/MarketSequencer?
+
+
+[10/05/2023 21:00] sovaslava9
+Does user could transfer concentrate position to other user?
+
+
+[10/05/2023 21:28] sovaslava9
+I've the same issue.. node -v v16.20.2   npm i I've done..
+
+
+[10/05/2023 21:43] sovaslava9
+what is pos.seeds_ in accrueAmbientPositionTimeWeightedLiquidity() ? its average liquidity..or current liquidity?
+
+
+[10/06/2023 06:26] mlome
+Why are these checks commented out?
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/SmartSelect_20231006-082436_Brave-8AC04.jpg
+
+
+[10/06/2023 07:15] banditx0x
+The protocol wouldn't be permissionless if you put access controls on important functions. By putting access controls in comments, you allow anybody to call the function but indicate to users "plz don't call this, it might hurt the protocol 😿 "
+
+{Reactions}
+😂 (10) 😆 
+
+[10/06/2023 07:16] mlome
+Is this a joke?
+
+{Reactions}
+4739_Skeletor (6) 
+
+[10/06/2023 07:27] lambda9382
+These functions were integrated into the Ambient access control system, which is a bit complicated: The functions in the callpaths cannot be called directly on the dex itself, the dex only performs delegatecalls to the `userCmd` and `protocolCmd` of each callpath. `protocolCmd` is only callable by privileged addresses. This is implemented here with the `protocolOnly` modifier:
+https://github.com/code-423n4/2023-10-canto/blob/29c92a926453a49c8935025a4d3de449150fc2ff/canto_ambient/contracts/CrocSwapDex.sol#L104
+
+{Embed}
+https://github.com/code-423n4/2023-10-canto/blob/29c92a926453a49c8935025a4d3de449150fc2ff/canto_ambient/contracts/CrocSwapDex.sol
+2023-10-canto/canto_ambient/contracts/CrocSwapDex.sol at 29c92a9264...
+Contribute to code-423n4/2023-10-canto development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/2456c543-d1a0-407b-ab11-042e63522129-2432D
+
+{Reactions}
+👍 (2) 
+
+[10/06/2023 10:50] sovaslava9
+so..user for get reward, should call function claim twice? first - for initialization, second - for reward, yes?
+
+
+[10/06/2023 10:51] lambda9382
+No, this is automatically called when a position is minted
+
+
+[10/06/2023 14:47] olanre_waju
+This audit is hard! cant wait to learn from report.....
+
+{Reactions}
+👍 
+
+[10/06/2023 15:02] varun2791
+@Roman dmed you please check
+
+{Reactions}
+✅ 
+
+[10/06/2023 16:54] Deleted User
+@Roman dmed pls check
+
+
+[10/06/2023 16:55] anirruth
+`timeWeightedWeeklyGlobalAmbLiquidity_`  is the total liquidity in the given week right?
+
+
+[10/06/2023 17:33] 0xx_ninja
+Is there a way i can re submit a gas optimization, made a mistake creating the first issue, as i didn't explain in details before submitting
+
+
+[10/06/2023 17:34] 0xx_ninja
+It's not allowing me to resend
+
+
+[10/06/2023 17:35] alymurtazamemon
+You can edit the previous one.
+
+
+[10/06/2023 19:12] 0xx_ninja
+Please how do i do that?
+
+
+[10/06/2023 19:17] alymurtazamemon
+Here in `Your Findings` tab you will find your report, just go and edit it.
+
+{Attachments}
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/Screenshot_2023-10-07_at_12.16.34_AM-2972D.png
+
+
+[10/06/2023 19:21] 0xx_ninja
+Thank you so much, this helps
+
+{Reactions}
+👍 
+
+[10/06/2023 20:00] hunter_w3b
+https://tenor.com/view/despicable-me-gru-almost-over-its-almost-over-its-almost-finished-gif-9707781365812094138
+
+{Embed}
+https://tenor.com/view/despicable-me-gru-almost-over-its-almost-over-its-almost-finished-gif-9707781365812094138
+Code4rena - ARCHIVE-Q4-2023 - canto-oct3 [1153772837409144912].txt_Files/despicable-me-gru-FEEEE.png
+
+
+[10/06/2023 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺wardens The **Canto Liquidity Mining Protocol** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Keep an eye on #📢announcements for regular updates on how the audit is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping a Contest-Admin if you have questions along the way!
+
+{Reactions}
+🧑🏻‍🍳 (2) 🤗 (2) ❤️ (3) 
+
+[10/06/2023 20:06] banditx0x
+How many submissions were there?
+
+{Reactions}
+👀 
+
+[10/06/2023 20:07] sovaslava9
+repositoriy with findings still creating..
+
+{Reactions}
+👍 
+
+[10/06/2023 20:34] saint6704
+congrats everyone on completing this audit
+
+{Reactions}
+👍 (4) 
+
+[10/06/2023 21:07] xariextz
+Only had time to go through ambient liquidity, but gave my best. GL everyone!
+
+
+[10/06/2023 21:34] 0xhelium
+How many submissions ?
+
+
+[10/07/2023 09:36] sovaslava9
+297
+
+
+[10/07/2023 09:54] xariextz
+Does this also account for QA, gas reports and Analysis?
+
+
+[10/07/2023 10:10] superman_i4g
+Yep
+
+{Reactions}
+👍 
+
+[10/07/2023 10:59] banditx0x
+Are you sure about this, in the context of his question?
+
+
+[10/07/2023 11:00] superman_i4g
+Yea, all submissions are counted whether QA, gas, M or H
+
+
+[10/07/2023 11:05] banditx0x
+Are right i get it
+
+
+[10/07/2023 11:05] banditx0x
+but aren't all indivudal submissions supposed to be H/M
+
+
+[10/07/2023 11:06] banditx0x
+even though they may get downgraded to Low/QA?
+
+
+[10/07/2023 11:06] banditx0x
+I thought Low/QA/Gas was submitted in a singular report
+
+
+[10/07/2023 11:06] superman_i4g
+Lol, nope
+
+
+[10/07/2023 11:07] superman_i4g
+Yep, that’s what am saying, all submissions are counted. QA,Gas, analysis
+H 
+M
+
+
+[10/07/2023 11:08] superman_i4g
+QA, Gas and analysis are counted as one.
+
+
+[10/07/2023 11:08] banditx0x
+Ohh i understand now. Thank you 🙂
+
+{Reactions}
+💯 (2) 
+
+[10/11/2023 09:36] xariextz
+Hey guys! How does the judging process work? Like do we get any updates in when the primarly results will come?
+
+
+[10/11/2023 13:05] lsaudit
+It usually takes 4-6 weeks for the result (sometimes quicker). If you don't have backstage role access - you can check the status at: https://www.dailywarden.com/
+
+
+[10/11/2023 16:15] lsdan
+After the contest ends the pre sort phase starts. Then the repo is handed to the sponsor. After the sponsor is done the judge does the final grading. Finally there is a post-judging qa period for backstage wardens to point out anything the judge may have missed. The normal target is 2 weeks for the whole process, but in practice it usually takes a few weeks longer.
+
+
+[10/11/2023 16:16] lsdan
+This one should be reasonably quick because there are not too many reports
+
+
+[10/11/2023 16:17] lsdan
+If I’m not mistaken the contest is being reviewed by the sponsor at this time. I’m the judge so feel free to ask for updates on where it’s at in the process here and tag me. I’ll do my best to respond quickly.
+
+{Reactions}
+C4Keycap (4) 
+
+[10/11/2023 16:46] 0x3b
+BASED
+
+
+[10/11/2023 18:43] xariextz
+Sent FR
+
+
+[10/17/2023 14:08] saint6704
+@LSDan when is the judging phase starting??
+
+
+[10/17/2023 14:43] lsdan
+It has started
+
+
+[10/17/2023 14:43] lsdan
+Hope to be done tonight
+
+
+[10/17/2023 14:43] lsdan
+But tomorrow at the latest
+
+{Reactions}
+👍 
+
+[10/17/2023 15:31] lsaudit
+any chance for the result coming this week then? (how long escalation period usually last)?
+
+
+[10/17/2023 15:48] borongod
+is there an escalation period in c4?😂
+
+
+[10/17/2023 16:11] lsdan
+Post judging QA is 72 hours. I would expect next week.
+
+
+[10/17/2023 16:19] xariextz
+The results are preliminar or definitive when announced here?
+
+
+[10/18/2023 05:08] superman_i4g
+No preliminary result. It’s definitive when announced here.
+
+{Reactions}
+👍 (2) 
+
+[10/18/2023 05:08] xariextz
+Thank you!
+
+
+[10/18/2023 19:39] invitedtea
+when do you think the result will come out?
+
+
+[10/19/2023 05:12] .satyam_
+@LSDan dmed you
+
+
+[10/19/2023 17:25] lsdan
+Friendly reminder not to just start pinging the judges or sponsors. Rules state you should ask first. Also, there is a time and a place for everything. After a contest closes, that time and place are post-judging qa.
+
+{Reactions}
+C4Keycap (3) 
+
+[10/23/2023 04:40] banditx0x
+Wen
+
+
+[10/23/2023 22:04] _paperparachute
+🤑 🎉  Awards for **Canto Liquidity Mining Protocol**:
+
+$3,294.78 USDC » @Deleted User  
+$2,934.85 USDC » @0xsload 
+$2,934.85 USDC » @ni8mare 
+$1,782.52 USDC » @adriro 
+$1,112.65 USDC » @banditx0x  
+$1,020.85 USDC » @HChang26 
+$797.35 USDC » @kutu 
+$614.48 USDC » @sces60107 | GimelSec 
+$386.19 USDC » @0xweb3boy 
+$364.87 USDC » @0xWaitress  
+$364.87 USDC » @3DOC 
+$364.87 USDC » @0xDING99YA 
+$359.93 USDC » @0xpiken 
+$359.93 USDC » @twicek 
+$359.93 USDC » @emerald7017 
+$310.68 USDC » @hunter_w3b 
+$119.71 USDC » @NiSeR 
+$113.58 USDC » @Albahaca 
+$113.58 USDC » @radev_sw 
+$92.09 USDC » @hihen 
+$92.09 USDC » @JCK 
+$92.09 USDC » @0xAnah 
+$87.06 USDC » MatricksDeCoder 
+$40.13 USDC »  @cookedcookee 
+$40.13 USDC » @0xdice91 
+$40.13 USDC » @0xSmartContractSamurai 
+$35.19 USDC » @invitedtea 
+$35.19 USDC » @ZanyBonzy 
+$35.19 USDC » @sandy 
+$8.67 USDC » @debo 
+$8.67 USDC » @Polaris_tow  
+$8.67 USDC » @lsaudit 
+$8.67 USDC » @Raihan 
+$8.67 USDC » @pipidu83 
+$8.67 USDC » @Shamsulhaq123 
+$8.67 USDC » @tabriz 
+$8.67 USDC » @SY_S 
+$8.67 USDC » @naman1778 
+$8.67 USDC » @SAQ 
+$4.94 USDC » @tpiliposian 
+$4.94 USDC » @pep7siup  
+$4.94 USDC » @0xAadi 
+$4.94 USDC » @iceBear 
+$4.94 USDC » @Luke John  
+$4.94 USDC » BRONZEDISC
+$4.94 USDC » GKBG (@Stoicov, @KKat7531) 
+$4.94 USDC » @zpan  
+$4.94 USDC » @100su 
+$4.94 USDC » @Topmark 
+$4.94 USDC » @taner2344 
+$4.94 USDC » @0x3b 
+$4.94 USDC » @matrix_0wl 
+$4.94 USDC » @SovaSlava 
+$4.94 USDC » @gzeon 
+$4.94 USDC » @BoRonGod 
+$4.94 USDC » @none 
+$4.94 USDC » @xAriextz  
+$4.94 USDC » @orion 
+$4.94 USDC » @marqymarq10 
+$4.94 USDC » @Eurovickk  
+$4.94 USDC » @0xTheC0der 
+$4.94 USDC » @Mike_Bello
+
+🏁 Findings summary
+--------------------------------------—
+High risk findings: 1 unique (9 total)
+Med risk findings:  5 unique (8 total)
+Gas reports: 16 total (Best: @NiSeR) 
+QA reports: 37 total (Best: @adriro) 
+Advanced analysis reports: 12 total (Best: @0xweb3boy) 
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+*Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.*
+
+{Reactions}
+code4rena (6) 🔥 (6) 🎉 (5) 
+
+[10/23/2023 22:09] xariextz
+Where can we see the judging repo?
+
+
+[10/23/2023 22:09] xariextz
+And the final report?
+
+
+[10/23/2023 22:10] 0xding99ya
+Hello, I had a reported issue and I believe it’s a duplicated one, but my issue was labeled as unsatisfactory. Is there anyway judge can view it again?
+
+
+[10/23/2023 22:10] 0xding99ya
+Seems I missed the post-judging
+
+
+[10/23/2023 22:15] saint6704
+congrats to @0xsload and @banditx0x
+
+{Reactions}
+thankyou (2) 
+
+[10/23/2023 22:16] 0xni8mare
+Yes, my first time in top 3 🔥
+
+{Reactions}
+dance_vibe 
+
+[10/23/2023 22:17] _paperparachute
+The repos are made public upon the release of the final report, which we aim to make available in 1-2 weeks
+
+
+[10/23/2023 22:18] _paperparachute
+Congratulations! #1 next! 🦾
+
+
+[10/23/2023 22:20] _paperparachute
+Unfortunately post judging QA is there for Backstage wardens to have these discussions. If you missed the opportunity there isn't really anything that can be done as judging is now finalised. You're welcome to start a discussion on the repo as you already have access to it as a Backstage warden.
+
+
+[10/23/2023 22:22] 0xding99ya
+@PaperParachute | C4 Thanks for your response! but how do I know when was the post judging period? I am a backstage but I didn't see any information that the post judging for this contest started
+
+
+[10/23/2023 22:26] _paperparachute
+Replied in Backstage
+
+
+[10/23/2023 22:28] cookedcookee
+Was my first contest, thought I'd found a medium but I suppose not 😅 
+
+Had fun anyway and learnt a lot. Congrats to everyone involved 🫡
+
+
+[10/23/2023 22:34] invitedtea
+@cookedcookee Congrats You can get $40, better than me. 🙂
+
+{Reactions}
+hi5 
+
+[10/23/2023 23:07] marjon2358
+Hi, I just started using code4rena. Does anyone know if you can see why your findings weren't deemed to be valid without backstage access?
+
+
+[10/23/2023 23:19] _paperparachute
+Once the report is released the repo will become public, and you can check your issues then 🙂
+
+
+[10/23/2023 23:22] marjon2358
+Thanks, appreciate it!
+
+
+[10/23/2023 23:43] shealtielanz
+Congrats @0xweb3boy
+
+
+[10/23/2023 23:46] saint6704
+Thanks ser 😊
+
+{Reactions}
+hi5 
+
+[10/23/2023 23:59] banditx0x
+Congrats everybody!
+
+
+[10/24/2023 00:13] .satyam_
+Congrats @0xweb3boy
+
+{Reactions}
+🫡 (2) 
+
+[10/24/2023 02:05] superman_i4g
+Same issue here;
+Someone even dropped a comment on my behalf (since I didn’t have backstage role) but it seems it wasn’t considered as escalation…C4 really need to reconsider this backstage role of a thing cus in reality it’s doing more harm than good.
+
+
+[10/24/2023 05:54] 0xpolarzero
+Congrats for the analysis!
+
+{Reactions}
+🫡 
+
+[10/24/2023 18:52] aarif02
+@superman_i4g sorry but you don't have backstage access, how do you know someone dropped comment under your submission?
+
+
+[10/24/2023 18:59] superman_i4g
+My teammate checked & told me he did so yup; it was more like ad-hoc team formation but only I submitted the vulnerability on behalf of both of us. That’s in the past now though; we move 🫱🏽‍🫲🏾
+
+
+[10/28/2023 17:36] invitedtea
+Hi Team, when do we expect to see the report?
+
+{Reactions}
+😀 (2) 
+
+[11/04/2023 08:44] 0xx_ninja
+When willl the report be out,  Need to see what i missed and learn from them
+
+
+[11/05/2023 14:57] _paperparachute
+In the next couple days. Just confirming something 🙂
+
+
+[02/24/2024 02:42] itsmetechjay
+ℹ️ This channel is pending archive.  As a result, any private threads will be permanently deleted on Saturday, 02 March 2024. Please make sure to grab anything you might need from those before then.
+
+
+[02/29/2024 22:34] itsmetechjay
+ℹ️ Reminder: this channel will be deleted in 24 hours.
+
+
+==============================================================
+Exported 196 message(s)
+==============================================================
